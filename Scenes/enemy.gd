@@ -21,19 +21,29 @@ var blood_container: Node2D
 
 var health: int = 100
 const PUNCH_DAMAGE = 40
+const BULLET_DAMAGE = 34
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 	blood_container = get_tree().get_nodes_in_group("BloodContainer")[0]
 
+func hit_by_bullet():
+	_on_hit(BULLET_DAMAGE)
+
 func push_back_by_player(punch_power: float):
 	var dir_to_player = (player.global_position - global_position).normalized()
 	push_back_velocity = -dir_to_player * PUSH_BACK_INITIAL_VELOCITY * punch_power
-	health -= punch_power * PUNCH_DAMAGE
+	_on_hit(punch_power * PUNCH_DAMAGE)
+
+func _on_hit(damage: float):
 	var blood = BLOOD.instantiate()
 	blood_container.add_child(blood)
 	blood.global_position = blood_marker.global_position
 	blood.rotation = picture.rotation + PI
+	
+	health -= damage
+	if health <= 0:
+		queue_free()
 
 func _physics_process(delta):
 	if push_back_velocity:

@@ -12,3 +12,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += Vector2.RIGHT.rotated(rotation) * velocity * delta
+
+
+func _on_area_2d_body_entered(body: Node2D):
+	# body is a PyhicsBody2D or a TileMap
+	if body.is_in_group('Enemies'):
+		body.hit_by_bullet()
+	queue_free()
