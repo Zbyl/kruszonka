@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgryeqbs7bwes"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_mcnkq"]
-[ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="2_60rbu"]
+[ext_resource type="Texture2D" uid="uid://ckndc1uhj4odg" path="res://graphics/mouse.png" id="2_770ws"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 30.0
@@ -12,9 +12,10 @@ script = ExtResource("1_mcnkq")
 [node name="Picture" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Picture"]
-rotation = 1.5708
-scale = Vector2(0.476563, 0.476563)
-texture = ExtResource("2_60rbu")
+position = Vector2(-3.55271e-14, 5)
+rotation = -1.5708
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_770ws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")

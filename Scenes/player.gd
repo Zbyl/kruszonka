@@ -3,6 +3,9 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
+const PUNCH_RADIUS = 20.0
+const PUNCH_POWER = 10.0
+
 @onready var picture = $Picture
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -26,3 +29,22 @@ func _physics_process(delta):
 		picture.look_at(global_position + look_direction)
 
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("punch"):
+		punch_enemies()
+		
+
+func punch_enemies():
+	print("punch_enemies()")
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		print("Processing punch")
+		var vec_to_enemy: Vector2 = (enemy.global_position - global_position)
+		if not vec_to_enemy:
+			vec_to_enemy = Vector2.RIGHT
+		if vec_to_enemy.length_squared() > PUNCH_RADIUS * PUNCH_RADIUS:
+			continue
+		print("Punching")
+		var enemy_punch = vec_to_enemy.normalized() * PUNCH_POWER
+		enemy.velocity += enemy_punch
+	
