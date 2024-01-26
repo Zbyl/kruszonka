@@ -43,6 +43,10 @@ func punch_enemies():
 		#print('Rotation', rad_to_deg(picture.rotation))
 		#print('Enemy angle', rad_to_deg(get_angle_to(enemy.global_position)))
 		var angle_diff = rad_to_deg(get_angle_to(enemy.global_position) - picture.rotation)
+		while angle_diff > 180.0:
+			angle_diff -= 360.0
+		while angle_diff < -180.0:
+			angle_diff += 360.0
 		print('Enemy angle', angle_diff)
 		angle_diff = abs(angle_diff)
 		if angle_diff > PUNCH_OUTER_ANGLE:
