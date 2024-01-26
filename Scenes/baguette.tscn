@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpnyg4p84b1s6"]
+
+[ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="1_4jw2y"]
+[ext_resource type="Script" path="res://Scenes/baguette.gd" id="1_syf26"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53v0q"]
+radius = 70.7368
+height = 160.0
+
+[sub_resource type="Animation" id="Animation_g4wyu"]
+resource_name = "hit1"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-12, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-19, -0.25, 0, 0.1, 47, 20.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-2, -0.25, 0, 0.0952777, 3, 1.5, -0.3, 0.5, 0.1, 0.162752),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:next_hit_possible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["", "hit2", "idle"]
+}
+
+[sub_resource type="Animation" id="Animation_1kj66"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhn40"]
+_data = {
+"hit1": SubResource("Animation_g4wyu"),
+"idle": SubResource("Animation_1kj66")
+}
+
+[node name="Baguette" type="Area2D"]
+position = Vector2(-11.3823, 18.6696)
+rotation = 1.23727
+script = ExtResource("1_syf26")
+next_hit_possible = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(38, 0)
+scale = Vector2(0.59375, 0.125)
+shape = SubResource("CapsuleShape2D_53v0q")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yhn40")
+}
+next/hit1 = &"idle"
+next/idle = &"idle"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(38, 0)
+scale = Vector2(0.59375, 0.125)
+texture = ExtResource("1_4jw2y")
+
+[connection signal="current_animation_changed" from="Anim" to="." method="_on_anim_current_animation_changed"]

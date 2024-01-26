@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=11 format=3 uid="uid://bm3xpc8kenn43"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_tnvft"]

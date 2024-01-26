@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
+
 const PUNCH_RADIUS = 20.0
 const PUNCH_POWER = 10.0
 
