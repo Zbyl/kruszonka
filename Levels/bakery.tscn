@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=11 format=3 uid="uid://bm3xpc8kenn43"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_tnvft"]
@@ -5,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="3_5ljqs"]
 [ext_resource type="PackedScene" uid="uid://dgwk0dccc3mi0" path="res://Scenes/player.tscn" id="3_mek1r"]
 [ext_resource type="PackedScene" uid="uid://dgryeqbs7bwes" path="res://Scenes/enemy.tscn" id="5_cmou4"]
-[ext_resource type="PackedScene" uid="uid://b1b5h7877s3xg" path="res://Scenes/enemy_2.tscn" id="6_aasm5"]
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="7_cjvl3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u8f7"]
@@ -26,6 +26,9 @@ sources/0 = SubResource("TileSetAtlasSource_6u8f7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnl74"]
 size = Vector2(120.5, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw86t"]
+size = Vector2(64, 64)
 
 [node name="Bakery" type="Node2D"]
 
@@ -72,12 +75,6 @@ position = Vector2(492, 249)
 [node name="Enemy" parent="." instance=ExtResource("5_cmou4")]
 position = Vector2(745, 474)
 
-[node name="Enemy2" parent="." instance=ExtResource("5_cmou4")]
-position = Vector2(913, 203)
-
-[node name="Enemy3" parent="." instance=ExtResource("6_aasm5")]
-position = Vector2(288, 392)
-
 [node name="RigidBody2D" type="RigidBody2D" parent="." groups=["Dummy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -87,3 +84,9 @@ shape = SubResource("RectangleShape2D_qnl74")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 position = Vector2(606, 96)
 texture = ExtResource("7_cjvl3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(229, 214)
+shape = SubResource("RectangleShape2D_kw86t")
