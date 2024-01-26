@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgwk0dccc3mi0"]
+
+[gd_scene load_steps=5 format=3 uid="uid://dgwk0dccc3mi0"]
 
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="1_6aur1"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_l2krp"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_6mons"]
-[ext_resource type="PackedScene" uid="uid://bpnyg4p84b1s6" path="res://Scenes/baguette.tscn" id="2_suqu7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 30.0
@@ -12,8 +12,6 @@ radius = 30.0
 script = ExtResource("1_l2krp")
 
 [node name="Picture" type="Node2D" parent="."]
-
-[node name="Baguette" parent="Picture" instance=ExtResource("2_suqu7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="Picture"]
 scale = Vector2(0.0332556, 0.0332556)
