@@ -1,28 +1,27 @@
 extends CharacterBody2D
 
-class_name Player
 
-const SPEED = 300.0
+const SPEED = 150.0
 @onready var picture = $Picture
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var player: Player
+
+func _ready():
+	player = get_tree().get_nodes_in_group("Player")[0]
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var move_direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
-	var look_direction = Input.get_vector("rotate_left", "rotate_right", "rotate_up", "rotate_down")
-	#look_direction = Vector2(-look_direction.y, look_direction.x)
-	#print("move_direction", move_direction)
+	var move_direction = (player.global_position - global_position).normalized()
 	if move_direction:
 		velocity = move_direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
-	if look_direction:
-		picture.look_at(global_position + look_direction)
+	picture.look_at(player.global_position)
 
 	move_and_slide()
