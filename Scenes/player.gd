@@ -3,9 +3,10 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-
-const PUNCH_RADIUS = 20.0
-const PUNCH_POWER = 10.0
+const PUNCH_RADIUS = 90.0
+const PUNCH_POWER = 100.0
+const PUNCH_INNER_ANGLE = 30
+const PUNCH_OUTER_ANGLE = 80
 
 @onready var picture = $Picture
 
@@ -38,8 +39,35 @@ func _physics_process(delta):
 func punch_enemies():
 	print("punch_enemies()")
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	for enemy in enemies:
+	for enemy: Enemy in enemies:
+		#print('Rotation', rad_to_deg(picture.rotation))
+		#print('Enemy angle', rad_to_deg(get_angle_to(enemy.global_position)))
+		var angle_diff = rad_to_deg(get_angle_to(enemy.global_position) - picture.rotation)
+		print('Enemy angle', angle_diff)
+		angle_diff = abs(angle_diff)
+		if angle_diff > PUNCH_OUTER_ANGLE:
+			continue
+		var punch_power = 1.0
+		if angle_diff > PUNCH_INNER_ANGLE:
+			punch_power = lerpf(1.0, 0.0, (angle_diff - PUNCH_INNER_ANGLE) / (PUNCH_OUTER_ANGLE - PUNCH_INNER_ANGLE))
+		var vec_to_enemy: Vector2 = (enemy.global_position - global_position)
+		#var dir_to_enemy: Vector2 = vec_to_enemy.normalized()
+		if not vec_to_enemy:
+			vec_to_enemy = Vector2.RIGHT
+		if vec_to_enemy.length_squared() > PUNCH_RADIUS * PUNCH_RADIUS:
+			continue
+		print("Punching")
+		enemy.push_back_by_player(punch_power)
+		
+	return
+	
+func trash():
+	print("punch_enemies()")
+	var enemies = get_tree().get_nodes_in_group("RigidBodyEnemies")
+	for enemy: RigidBody2D in enemies:
 		print("Processing punch")
+		#enemy.apply_central_impulse(Vector2(1000.0, 0.0))
+		#continue
 		var vec_to_enemy: Vector2 = (enemy.global_position - global_position)
 		if not vec_to_enemy:
 			vec_to_enemy = Vector2.RIGHT
@@ -47,5 +75,5 @@ func punch_enemies():
 			continue
 		print("Punching")
 		var enemy_punch = vec_to_enemy.normalized() * PUNCH_POWER
-		enemy.velocity += enemy_punch
-	
+		#enemy.velocity += enemy_punch
+		enemy.apply_central_impulse(enemy_punch)
