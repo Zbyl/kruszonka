@@ -9,6 +9,9 @@ const PUNCH_INNER_ANGLE = 30
 const PUNCH_OUTER_ANGLE = 80
 
 @onready var picture = $Picture
+@onready var picture_container = $Picture/PictureContainer
+
+var punch_tween: Tween
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -34,7 +37,16 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("punch"):
 		punch_enemies()
-		
+	
+		if punch_tween:
+			punch_tween.kill()
+		punch_tween = get_tree().create_tween()
+		#tween.tween_property($Sprite, "modulate", Color.RED, 1)
+		punch_tween.tween_property(picture_container, "scale", Vector2(1.3, 1), 0.07)
+		punch_tween.parallel().tween_property(picture_container, "position", Vector2(5, 0), 0.07)
+		punch_tween.tween_property(picture_container, "scale", Vector2(1, 1), 0.07)
+		punch_tween.parallel().tween_property(picture_container, "position", Vector2(-5, 0), 0.07)
+		#tween.tween_callback($Sprite.queue_free)		
 
 func punch_enemies():
 	print("punch_enemies()")

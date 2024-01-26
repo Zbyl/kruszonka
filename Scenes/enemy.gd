@@ -10,17 +10,30 @@ const MIN_DISTANCE_TO_PLAYER = 80
 
 var push_back_velocity: Vector2 = Vector2.ZERO
 
+const BLOOD = preload("res://Scenes/blood.tscn")
+@onready var blood_marker = $Picture/BloodMarker
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player: Player
+var blood_container: Node2D
+
+var health: int = 100
+const PUNCH_DAMAGE = 40
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
+	blood_container = get_tree().get_nodes_in_group("BloodContainer")[0]
 
 func push_back_by_player(punch_power: float):
 	var dir_to_player = (player.global_position - global_position).normalized()
 	push_back_velocity = -dir_to_player * PUSH_BACK_INITIAL_VELOCITY * punch_power
+	health -= punch_power * PUNCH_DAMAGE
+	var blood = BLOOD.instantiate()
+	blood_container.add_child(blood)
+	blood.global_position = blood_marker.global_position
+	blood.rotation = picture.rotation + PI
 
 func _physics_process(delta):
 	if push_back_velocity:

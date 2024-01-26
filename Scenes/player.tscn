@@ -12,16 +12,18 @@ script = ExtResource("1_l2krp")
 
 [node name="Picture" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Picture"]
+[node name="PictureContainer" type="Node2D" parent="Picture"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Picture/PictureContainer"]
 scale = Vector2(0.0332556, 0.0332556)
 texture = ExtResource("2_6mons")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Picture"]
+[node name="Sprite2D2" type="Sprite2D" parent="Picture/PictureContainer"]
 position = Vector2(28, -7)
 scale = Vector2(0.0703125, 0.0625)
 texture = ExtResource("1_6aur1")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Picture"]
+[node name="Sprite2D3" type="Sprite2D" parent="Picture/PictureContainer"]
 position = Vector2(28, 8)
 scale = Vector2(0.0703125, 0.0625)
 texture = ExtResource("1_6aur1")
