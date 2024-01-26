@@ -7,7 +7,7 @@
 script = ExtResource("1_lg11w")
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.12
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, 1.90735e-06)

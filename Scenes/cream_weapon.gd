@@ -9,6 +9,7 @@ var can_shoot = true	# True if cooldown finished.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.visible = false
 	$Cooldown.timeout.connect(func(): self.can_shoot = true)
 
 

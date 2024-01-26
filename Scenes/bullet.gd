@@ -1,6 +1,6 @@
 class_name Bullet extends Node2D
 
-@export var velocity = 300
+@export var velocity = 900
 @export var lifetime = 1.5 
 
 # Called when the node enters the scene tree for the first time.
