@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm64kef5ldxxf"]
+
+[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
+[ext_resource type="Texture2D" uid="uid://gfpoed85ih73" path="res://graphics/buloslaw.png" id="2_hoiir"]
+
+[node name="Hud" type="CanvasLayer" groups=["Hud"]]
+script = ExtResource("1_h83wx")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GunSelection" type="TextureRect" parent="Control"]
+offset_left = 23.0
+offset_top = 13.0
+offset_right = 118.0
+offset_bottom = 108.0
+texture = ExtResource("2_hoiir")
+
+[node name="BoomerangSelection" type="TextureRect" parent="Control"]
+offset_left = 101.0
+offset_top = 13.0
+offset_right = 196.0
+offset_bottom = 108.0
+texture = ExtResource("2_hoiir")
+
+[node name="Gun" type="TextureRect" parent="Control"]
+offset_left = 35.0
+offset_top = 24.0
+offset_right = 99.0
+offset_bottom = 88.0
+texture = ExtResource("2_hoiir")
+
+[node name="Boomerang" type="TextureRect" parent="Control"]
+offset_left = 119.0
+offset_top = 24.0
+offset_right = 183.0
+offset_bottom = 88.0
+texture = ExtResource("2_hoiir")

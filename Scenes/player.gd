@@ -16,6 +16,8 @@ var punch_tween: Tween
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	GameData.hud.weapon_changed.connect(_on_weapon_changed)
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -93,3 +95,11 @@ func trash():
 		var enemy_punch = vec_to_enemy.normalized() * PUNCH_POWER
 		#enemy.velocity += enemy_punch
 		enemy.apply_central_impulse(enemy_punch)
+
+
+func _on_weapon_changed(weapon_type: Hud.WeaponType):
+	match weapon_type:
+		Hud.WeaponType.GUN:
+			print('Selected gun.')
+		Hud.WeaponType.BOOMERANG:
+			print('Selected boomerang.')

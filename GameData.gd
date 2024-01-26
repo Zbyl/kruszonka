@@ -1,14 +1,10 @@
 extends Node
 
-const BAKERY = preload("res://Levels/bakery.tscn")
-
-var level
+var hud: Hud
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level = BAKERY.instantiate()
-	add_child(level)
-	pass
+	hud = get_tree().get_first_node_in_group('Hud')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
