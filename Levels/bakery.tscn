@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm3xpc8kenn43"]
+[gd_scene load_steps=11 format=3 uid="uid://bm3xpc8kenn43"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_tnvft"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_hwuds"]
 [ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="3_5ljqs"]
 [ext_resource type="PackedScene" uid="uid://dgwk0dccc3mi0" path="res://Scenes/player.tscn" id="3_mek1r"]
-[ext_resource type="PackedScene" uid="uid://ci1dg0litcdb1" path="res://Scenes/crate.tscn" id="4_p70tv"]
 [ext_resource type="PackedScene" uid="uid://dgryeqbs7bwes" path="res://Scenes/enemy.tscn" id="5_cmou4"]
 [ext_resource type="PackedScene" uid="uid://b1b5h7877s3xg" path="res://Scenes/enemy_2.tscn" id="6_aasm5"]
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="7_cjvl3"]
@@ -69,83 +68,6 @@ layer_0/tile_data = PackedInt32Array(-65539, 0, 0, -3, 0, 0, 65533, 0, 0, 65534,
 
 [node name="Player" parent="." instance=ExtResource("3_mek1r")]
 position = Vector2(492, 249)
-
-[node name="Crates" type="Node2D" parent="."]
-
-[node name="Crate" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1236, 262)
-
-[node name="Crate2" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1308, 262)
-
-[node name="Crate3" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1378, 262)
-
-[node name="Crate4" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(964, 41)
-
-[node name="Crate5" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1036, 41)
-
-[node name="Crate6" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1106, 41)
-
-[node name="Crate7" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1098, 341)
-
-[node name="Crate8" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1099, 414)
-
-[node name="Crate9" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1098, 486)
-
-[node name="Crate10" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(47, 581)
-
-[node name="Crate11" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(119, 581)
-
-[node name="Crate12" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(189, 581)
-
-[node name="Crate13" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(130, 221)
-
-[node name="Crate14" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(202, 221)
-
-[node name="Crate15" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(272, 221)
-
-[node name="Crate16" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(40, 37)
-
-[node name="Crate17" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(41, 110)
-
-[node name="Crate18" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(40, 182)
-
-[node name="Crate19" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(342, 66)
-
-[node name="Crate20" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(112, 39)
-
-[node name="Crate21" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(184, 39)
-
-[node name="Crate22" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(254, 39)
-
-[node name="Crate23" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(950, 571)
-
-[node name="Crate24" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1022, 571)
-
-[node name="Crate25" parent="Crates" instance=ExtResource("4_p70tv")]
-position = Vector2(1092, 571)
 
 [node name="Enemy" parent="." instance=ExtResource("5_cmou4")]
 position = Vector2(745, 474)
