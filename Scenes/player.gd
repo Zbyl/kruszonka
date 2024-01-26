@@ -10,6 +10,8 @@ const PUNCH_OUTER_ANGLE = 80
 
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
+@onready var cream_weapon: CreamWeapon = $Picture/CreamWeapon
+
 
 var punch_tween: Tween
 
@@ -98,8 +100,10 @@ func trash():
 
 
 func _on_weapon_changed(weapon_type: Hud.WeaponType):
+	cream_weapon.activate(false)
 	match weapon_type:
 		Hud.WeaponType.GUN:
 			print('Selected gun.')
+			cream_weapon.activate(true)
 		Hud.WeaponType.BOOMERANG:
 			print('Selected boomerang.')

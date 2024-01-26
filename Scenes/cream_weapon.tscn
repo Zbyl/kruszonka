@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdxxj78yooh0o"]
+[gd_scene load_steps=3 format=3 uid="uid://cli6rot5dn72y"]
 
 [ext_resource type="Script" path="res://Scenes/cream_weapon.gd" id="1_lg11w"]
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="2_6pmky"]
 
 [node name="CreamWeapon" type="Node2D"]
 script = ExtResource("1_lg11w")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.25
