@@ -12,11 +12,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("punch"):
 		if not visible:
 			next_hit_possible = "hit1"
 		if next_hit_possible != "":
-			print('co')
 			visible = true
 			collision_layer = default_clayer
 			
