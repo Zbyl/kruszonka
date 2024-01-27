@@ -29,6 +29,7 @@ var health: float = 100.0
 var bunnies
 
 const BLOOD = preload("res://Scenes/bite_blood.tscn")
+const HEALING_EFFECT = preload("res://Scenes/healing_effect.tscn")
 @onready var blood_marker = $BloodMarker
 var blood_container: Node2D
 
@@ -184,5 +185,8 @@ func _input(event):
 		mouse_used = false
 
 func add_health():
+	var effect = HEALING_EFFECT.instantiate()
+	add_child(effect)
+
 	health = 100
 	GameData.hud.update_health_label(health)

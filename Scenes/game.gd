@@ -66,7 +66,8 @@ func _on_player_won():
 
 func pause_player_and_enemies(do_pause: bool):
 	var player = get_tree().get_first_node_in_group("Player")
-	player.pause(do_pause)
+	if player:
+		player.pause(do_pause)
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	for enemy: Enemy in enemies:
 		enemy.pause(do_pause)

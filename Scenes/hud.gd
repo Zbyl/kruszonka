@@ -96,6 +96,7 @@ func show_menu(do_show: bool):
 	menu.visible = do_show
 	if do_show:
 		new_game_button.grab_focus()
+	GameData.game.pause_player_and_enemies(do_show)
 
 func show_weapons(do_show: bool):
 	weapons.visible = do_show
