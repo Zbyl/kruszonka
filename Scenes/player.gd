@@ -12,6 +12,7 @@ const CAMERA_AIM_OFFSET = 200
 const CAMERA_MOVE_OFFSET = 200
 
 const ENEMY_ATTACK_DAMAGE: float = 10.0 # Health damage caused by enemy attacks.
+const MAX_SAVED_BUNNY_DISTANCE: float = 3.0 * 64
 
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
@@ -116,6 +117,10 @@ func punch_enemies():
 			continue
 		print("Punching")
 		enemy.push_back_by_player(punch_power)
+		if has_all_bunnies():
+			print('Have all bunnies.')
+		else:
+			print('Some bunnies still missing.')
 		
 	return
 
@@ -147,3 +152,13 @@ func hit_by_enemy(enemy: Enemy):
 		health = 0
 		animation_player.play('death')
 		GameData.game._on_player_lost()
+
+func has_all_bunnies():
+	var bunnies = get_tree().get_nodes_in_group("Bunnies")
+	for bunny: Bunny in bunnies:
+		var vec_to_bunny = bunny.global_position - global_position
+		if vec_to_bunny.length() > MAX_SAVED_BUNNY_DISTANCE:
+			return false
+		
+	return true
+	

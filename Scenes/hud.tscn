@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="2_uxpl3"]
 [ext_resource type="Texture2D" uid="uid://cncknss0khcjx" path="res://graphics/frame_selected.png" id="3_7stxd"]
 [ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
-[ext_resource type="Texture2D" uid="uid://df1c05tliehhk" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
+[ext_resource type="Texture2D" uid="uid://dfpcgblolyoc3" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 
 [sub_resource type="SystemFont" id="SystemFont_1umsg"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_30mec"]
 font = SubResource("SystemFont_1umsg")

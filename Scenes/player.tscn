@@ -50,36 +50,6 @@ tracks/2/keys = {
 "values": [ExtResource("1_6aur1")]
 }
 
-[sub_resource type="Animation" id="Animation_xt4j3"]
-resource_name = "gun"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_evmvo")]
-}
-
-[sub_resource type="Animation" id="Animation_4mep5"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_6mons")]
-}
-
 [sub_resource type="Animation" id="Animation_s31ri"]
 resource_name = "death"
 length = 0.1
@@ -119,6 +89,36 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("1_6aur1")]
+}
+
+[sub_resource type="Animation" id="Animation_xt4j3"]
+resource_name = "gun"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_evmvo")]
+}
+
+[sub_resource type="Animation" id="Animation_4mep5"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6mons")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wq56y"]
