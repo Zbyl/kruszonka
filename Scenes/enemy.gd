@@ -18,6 +18,7 @@ var blood_container: Node2D
 @export var navigation_target: Node2D
 const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_target when it is this close.
 const ACTIVATION_DISTANCE = 10 * 64 	# Enemy will ignore player farther than this.
+var sees_player = false
 
 @onready var attack_cooldown = $AttackCooldown
 var can_attack: bool = true
@@ -36,6 +37,9 @@ const PUNCH_DAMAGE = 40
 const BULLET_DAMAGE = 34
 const BOOMERANG_DAMAGE = 60
 const BOOMERANG_IMMUNE_TIME = 300
+
+
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -72,6 +76,7 @@ func _physics_process(_delta):
 	if paused:
 		return
 
+
 	if push_back_velocity:
 		velocity += push_back_velocity
 		push_back_velocity.x = move_toward(push_back_velocity.x, 0, PUSH_BACK_DRAG)
@@ -81,10 +86,19 @@ func _physics_process(_delta):
 		
 	var move_direction = Vector2.ZERO
 	var vec_to_player = player.global_position - global_position
+	
+	$PlayerRaycast.target_position = vec_to_player
+	$PlayerRaycast.force_raycast_update()
+	if $PlayerRaycast.get_collider() == player:
+		sees_player = true
+		$PlayerForget.start()
+	
+	print(sees_player)
+	
 	if navigation_target:
 		# We are following a path.
 		var vec_to_target = navigation_agent.get_next_path_position() - global_position
-		if vec_to_target.length() > ACTIVATION_DISTANCE:
+		if vec_to_target.length() > ACTIVATION_DISTANCE or not sees_player:
 			move_direction = Vector2.ZERO
 		elif vec_to_target.length() <= TARGET_REACHED_DISTANCE:
 			move_direction = Vector2.ZERO
@@ -98,7 +112,7 @@ func _physics_process(_delta):
 		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		if vec_to_player.length() > ACTIVATION_DISTANCE:
+		if vec_to_player.length() > ACTIVATION_DISTANCE or not sees_player:
 			move_direction = Vector2.ZERO
 		else:
 			move_direction = vec_to_player.normalized()
@@ -124,7 +138,8 @@ func _physics_process(_delta):
 
 	# Rotate picture of the enemy to look at the player.
 	# We don't rotate the whole enemy beause collition detection works weirdly then.
-	picture.look_at(player.global_position)
+	if sees_player:
+		picture.look_at(player.global_position)
 
 	move_and_slide()
 
@@ -140,3 +155,7 @@ func _on_navigation_timer_timeout():
 		return
 		
 	navigation_agent.target_position = navigation_target.global_position
+
+
+func _on_player_forget_timeout():
+	sees_player = false
