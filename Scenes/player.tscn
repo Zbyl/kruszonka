@@ -1,15 +1,70 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgwk0dccc3mi0"]
+[gd_scene load_steps=12 format=3 uid="uid://dgwk0dccc3mi0"]
 
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="1_6aur1"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_l2krp"]
 [ext_resource type="PackedScene" uid="uid://cli6rot5dn72y" path="res://Scenes/cream_weapon.tscn" id="2_3hmvj"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_6mons"]
 [ext_resource type="PackedScene" uid="uid://rwq7heh8a5k6" path="res://Scenes/croissant_gun.tscn" id="3_42fvx"]
+[ext_resource type="Texture2D" uid="uid://6447j64ertuk" path="res://graphics/buloslaw_z_kruszonka.png" id="6_evmvo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 28.0
 
+[sub_resource type="Animation" id="Animation_kya2r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6mons")]
+}
+
+[sub_resource type="Animation" id="Animation_xt4j3"]
+resource_name = "gun"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_evmvo")]
+}
+
+[sub_resource type="Animation" id="Animation_4mep5"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Picture/PictureContainer/Bun:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_6mons")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wq56y"]
+_data = {
+"RESET": SubResource("Animation_kya2r"),
+"gun": SubResource("Animation_xt4j3"),
+"idle": SubResource("Animation_4mep5")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_l2krp")
 
 [node name="CTMoveOffset" type="Node2D" parent="."]
@@ -26,19 +81,24 @@ player = NodePath("../..")
 
 [node name="PictureContainer" type="Node2D" parent="Picture"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Picture/PictureContainer"]
+[node name="Bun" type="Sprite2D" parent="Picture/PictureContainer"]
 scale = Vector2(0.0332556, 0.0332556)
 texture = ExtResource("2_6mons")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Picture/PictureContainer"]
+[node name="LeftEye" type="Sprite2D" parent="Picture/PictureContainer"]
 position = Vector2(28, -7)
 scale = Vector2(0.0703125, 0.0625)
 texture = ExtResource("1_6aur1")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Picture/PictureContainer"]
+[node name="RightEye" type="Sprite2D" parent="Picture/PictureContainer"]
 position = Vector2(28, 8)
 scale = Vector2(0.0703125, 0.0625)
 texture = ExtResource("1_6aur1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wq56y")
+}

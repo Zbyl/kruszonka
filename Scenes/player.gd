@@ -17,6 +17,7 @@ const CAMERA_MOVE_OFFSET = 200
 @onready var boomerang_weapon: BoomerangWeapon = $Picture/CroissantGun
 @onready var camera_target: Node2D = $CTMoveOffset/CameraTarget
 @onready var camera_move_offset: Node2D = $CTMoveOffset
+@onready var animation_player = $AnimationPlayer
 
 
 var punch_tween: Tween
@@ -31,6 +32,7 @@ func pause(do_pause: bool):
 
 func _ready():
 	GameData.hud.weapon_changed.connect(_on_weapon_changed)
+	_on_weapon_changed(GameData.hud.current_weapon)
 
 func _physics_process(_delta):
 	if paused:
@@ -108,11 +110,13 @@ func punch_enemies():
 
 
 func _on_weapon_changed(weapon_type: Hud.WeaponType):
+	animation_player.play('idle')
 	cream_weapon.activate(false)
 	boomerang_weapon.activate(false)
 	match weapon_type:
 		Hud.WeaponType.GUN:
 			print('Selected gun.')
+			animation_player.play('gun')
 			cream_weapon.activate(true)
 		Hud.WeaponType.BOOMERANG:
 			print('Selected boomerang.')

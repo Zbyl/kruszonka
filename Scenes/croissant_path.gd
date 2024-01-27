@@ -27,7 +27,7 @@ func _physics_process(delta):
 	else:
 		$Path/PathFollow2D.progress_ratio = next
 	
-	$Path/PathFollow2D/Croissant.rotation += 4*PI*delta
+	$Path/PathFollow2D/Croissant.rotation += 2*PI*delta
 
 
 func _on_croissant_body_entered(body: Node2D):
