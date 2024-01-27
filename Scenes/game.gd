@@ -17,7 +17,7 @@ func _ready():
 	hud.show_menu(true)
 	hud.show_weapons(false)
 	
-	music.play()
+	music.play()	# @todo Make it loop somehow.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
