@@ -5,13 +5,19 @@ class_name Hud
 enum WeaponType { GUN, BOOMERANG }
 
 signal weapon_changed(weapon_type: WeaponType)
+signal new_game_pressed()
+signal exit_game_pressed()
 
-@onready var gun_selection = $Control/GunSelection
-@onready var boomerang_selection = $Control/BoomerangSelection
+@onready var weapons = $Screen/Weapons
+@onready var gun_selection = $Screen/Weapons/GunSelection
+@onready var boomerang_selection = $Screen/Weapons/BoomerangSelection
+@onready var menu = $Screen/Menu
+@onready var new_game_button = $Screen/Menu/NewGameButton
 
 var weapon_types: Array
 var weapon_selections: Array
 var current_weapon: int = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,11 +27,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("next_weapon"):
 		next_weapon()
 	if Input.is_action_just_pressed("prev_weapon"):
 		prev_weapon()
+
+	if Input.is_action_just_pressed("ui_menu"):
+		toggle_menu()
 
 func next_weapon():
 	current_weapon = (current_weapon + 1) % weapon_selections.size()
@@ -43,3 +52,21 @@ func select_weapon(index: int):
 	selection.visible = true
 	
 	weapon_changed.emit(weapon_types[index])
+
+func toggle_menu():
+	show_menu(!menu.visible)
+
+func show_menu(do_show: bool):
+	menu.visible = do_show
+	if do_show:
+		new_game_button.grab_focus()
+
+func show_weapons(do_show: bool):
+	weapons.visible = do_show
+
+func _on_new_game_button_pressed():
+	new_game_pressed.emit()
+
+
+func _on_exit_game_button_pressed():
+	exit_game_pressed.emit()

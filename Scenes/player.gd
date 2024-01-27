@@ -22,7 +22,7 @@ var punch_tween: Tween
 func _ready():
 	GameData.hud.weapon_changed.connect(_on_weapon_changed)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move_direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")

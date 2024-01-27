@@ -19,7 +19,7 @@ const BLOOD = preload("res://Scenes/blood.tscn")
 var player: Player
 var blood_container: Node2D
 
-var health: int = 100
+var health: float = 100.0
 const PUNCH_DAMAGE = 40
 const BULLET_DAMAGE = 34
 const BOOMERANG_DAMAGE = 60
@@ -49,7 +49,7 @@ func _on_hit(damage: float):
 	if health <= 0:
 		queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if push_back_velocity:
 		velocity += push_back_velocity
 		push_back_velocity.x = move_toward(push_back_velocity.x, 0, PUSH_BACK_DRAG)
