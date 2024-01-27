@@ -17,10 +17,6 @@ script = ExtResource("1_l2krp")
 [node name="CameraTarget" type="Node2D" parent="CTMoveOffset"]
 position = Vector2(194, 0)
 
-[node name="Icon" type="Sprite2D" parent="CTMoveOffset"]
-position = Vector2(-1, 1)
-texture = ExtResource("1_6aur1")
-
 [node name="Picture" type="Node2D" parent="."]
 
 [node name="CreamWeapon" parent="Picture" instance=ExtResource("2_3hmvj")]
