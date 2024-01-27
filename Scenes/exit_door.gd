@@ -29,11 +29,14 @@ func _on_area_2d_body_exited(_body):
 
 func try_show_info():
 	if player.has_all_bunnies():
+		print('Player has all the bunies.')
 		GameData.game._on_player_won()
-	elif can_show_info:
-		can_show_info = false
-		info.visible = true
-		animation_player.play("float")
+	else:
+		print('Player does not have all the bunies.')
+		if can_show_info:
+			can_show_info = false
+			info.visible = true
+			animation_player.play("float")
 			
 func hide_info(_anim_name):
 	can_show_info = true
