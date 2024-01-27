@@ -3,6 +3,7 @@ extends Node2D
 class_name CreamWeapon
 
 const bullet = preload("res://Scenes/bullet.tscn")
+@onready var fire_sound = $FireSound
 
 var activated = false	# True if weapon is currently active.
 var can_shoot = true	# True if cooldown finished.
@@ -35,3 +36,5 @@ func _shoot():
 	b.global_rotation = $Muzzle.global_rotation
 	
 	get_tree().root.add_child(b)
+	
+	fire_sound.play()

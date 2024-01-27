@@ -3,6 +3,7 @@ extends Node
 class_name Game
 
 @onready var hud = $Hud
+@onready var music = $Music
 
 const BAKERY = preload("res://Levels/bakery.tscn")
 
@@ -15,6 +16,8 @@ func _ready():
 	hud.show_background(true)
 	hud.show_menu(true)
 	hud.show_weapons(false)
+	
+	music.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
