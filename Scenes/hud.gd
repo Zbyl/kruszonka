@@ -17,8 +17,9 @@ signal exit_game_pressed()
 @onready var menu = $Screen/Menu
 @onready var new_game_button = $Screen/Menu/MenuButtons/NewGameButton
 @onready var initial_timer = $Screen/InitialTimer
-@onready var health_label: Label = $Screen/HealthLabel
-@onready var buns_saved_label = $Screen/BunsSavedLabel
+@onready var health_label: Label = $Screen/Gauges/HealthLabel
+@onready var buns_saved_label = $Screen/Gauges/BunsSavedLabel
+@onready var gauges = $Screen/Gauges
 
 
 var allowed_weapons: Array
@@ -98,6 +99,7 @@ func show_menu(do_show: bool):
 
 func show_weapons(do_show: bool):
 	weapons.visible = do_show
+	gauges.visible = do_show
 
 func show_background(do_show: bool):
 	background.visible = do_show
