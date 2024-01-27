@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wr78cqydn20l"]
+[gd_scene load_steps=8 format=3 uid="uid://wr78cqydn20l"]
 
 [ext_resource type="Script" path="res://Scenes/croissant_path.gd" id="1_pt0u7"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="2_w0awx"]
+[ext_resource type="AudioStream" uid="uid://cct2lhpweobna" path="res://Sounds/croissant.wav" id="3_sb4bw"]
+[ext_resource type="AudioStream" uid="uid://ci8ukd0ok58mb" path="res://Sounds/croissant-throw.wav" id="4_p88t1"]
 
 [sub_resource type="Curve" id="Curve_mcuv8"]
 _data = [Vector2(0.00549451, 1), 0.0, -0.420398, 0, 0, Vector2(0.381868, 0.726386), -0.703178, -0.703178, 0, 0, Vector2(1, 0.432752), -0.299782, 0.0, 0, 0]
@@ -39,5 +41,15 @@ texture = ExtResource("2_w0awx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/Croissant"]
 shape = SubResource("CircleShape2D_v4nr4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sb4bw")
+volume_db = -8.013
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_p88t1")
+volume_db = -9.478
+autoplay = true
 
 [connection signal="body_entered" from="Path/PathFollow2D/Croissant" to="." method="_on_croissant_body_entered"]

@@ -132,13 +132,15 @@ one_shot = true
 autostart = true
 
 [node name="HealthIcon" type="TextureRect" parent="Screen"]
-layout_mode = 2
-anchor_top = 1.08
-anchor_bottom = 1.08
-offset_left = 21.0
-offset_top = -124.48
-offset_right = 601.0
-offset_bottom = 515.52
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -95.9999
+offset_right = 581.0
+offset_bottom = 544.0
+grow_vertical = 0
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("6_ql4xw")
 
@@ -157,30 +159,33 @@ label_settings = SubResource("LabelSettings_30mec")
 
 [node name="BunsSavedLabel" type="Label" parent="Screen"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 1.075
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.075
-offset_left = -197.0
-offset_top = -110.95
-offset_right = -23.0
-offset_bottom = -55.95
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -80.0
+offset_right = -31.0
+offset_bottom = -25.0
+grow_horizontal = 0
 grow_vertical = 0
 text = "100 / 100"
 label_settings = SubResource("LabelSettings_30mec")
 
-[node name="TextureRect" type="TextureRect" parent="Screen"]
+[node name="BunsSavedIcon" type="TextureRect" parent="Screen"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 3
 anchor_left = 1.0
-anchor_top = 1.075
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.075
-offset_left = -286.0
-offset_top = -113.95
-offset_right = 4322.0
-offset_bottom = 3342.05
+anchor_bottom = 1.0
+offset_left = -281.0
+offset_top = -81.0
+offset_right = 4327.0
+offset_bottom = 3375.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_ggmce")
 

@@ -16,6 +16,7 @@ var activated = false	# True if weapon is currently active.
 func _ready():
 	self.visible = false
 
+	
 
 func activate(should_activate: bool):
 	if should_activate:
@@ -33,3 +34,4 @@ func try_shoot():
 		get_tree().root.add_child(path)
 		path.global_position = self.global_position
 		path.global_rotation = self.global_rotation
+		#path.tree_exiting.connect(func(): $CatchSound.play())
