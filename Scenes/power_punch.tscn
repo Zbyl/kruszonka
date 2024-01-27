@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://b22dru6sp72en"]
+
+[ext_resource type="Script" path="res://Scenes/blood.gd" id="1_ntrx0"]
+[ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_d56s4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtxl6"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_0n0le"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.977528, 53.8462), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iuymo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d2khl"]
+offsets = PackedFloat32Array(0, 0.533333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_1i2ll"]
+colors = PackedColorArray(0.847059, 0, 0, 1, 0.894118, 0.988235, 0.321569, 1)
+
+[node name="PowerPunch" type="Node2D"]
+script = ExtResource("1_ntrx0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_jtxl6")
+emitting = false
+amount = 7
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.46
+texture = ExtResource("2_d56s4")
+spread = 180.0
+gravity = Vector2(0, 0)
+damping_min = 37.374
+damping_max = 37.374
+damping_curve = SubResource("Curve_0n0le")
+scale_amount_min = 0.1
+scale_amount_max = 0.12
+scale_amount_curve = SubResource("Curve_iuymo")
+color_ramp = SubResource("Gradient_d2khl")
+color_initial_ramp = SubResource("Gradient_1i2ll")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

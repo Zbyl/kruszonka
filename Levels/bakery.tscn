@@ -1499,4 +1499,6 @@ position = Vector2(-1518, 1438)
 [node name="IndoorTree13" parent="IndoorTrees" instance=ExtResource("14_ljtey")]
 position = Vector2(-1518, 1438)
 
+[node name="SmokeContainer" type="Node2D" parent="." groups=["SmokeContainer"]]
+
 [editable path="Player"]

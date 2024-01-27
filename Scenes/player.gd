@@ -30,6 +30,7 @@ var bunnies
 
 const BLOOD = preload("res://Scenes/bite_blood.tscn")
 const HEALING_EFFECT = preload("res://Scenes/healing_effect.tscn")
+const POWER_PUNCH = preload("res://Scenes/power_punch.tscn")
 @onready var blood_marker = $BloodMarker
 var blood_container: Node2D
 
@@ -82,6 +83,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("punch"):
 		punch_enemies()
 	
+		var effect = POWER_PUNCH.instantiate()
+		picture.add_child(effect)
+		picture.move_child(effect, 0)
+
 		if punch_tween:
 			punch_tween.kill()
 		punch_tween = get_tree().create_tween()
@@ -109,18 +114,19 @@ func punch_enemies():
 	for enemy in enemies:
 		#print('Rotation', rad_to_deg(picture.rotation))
 		#print('Enemy angle', rad_to_deg(get_angle_to(enemy.global_position)))
-		var angle_diff = rad_to_deg(get_angle_to(enemy.global_position) - picture.rotation)
-		while angle_diff > 180.0:
-			angle_diff -= 360.0
-		while angle_diff < -180.0:
-			angle_diff += 360.0
-		#print('Enemy angle', angle_diff)
-		angle_diff = abs(angle_diff)
-		if angle_diff > PUNCH_OUTER_ANGLE:
-			continue
 		var punch_power = 1.0
-		if angle_diff > PUNCH_INNER_ANGLE:
-			punch_power = lerpf(1.0, 0.0, (angle_diff - PUNCH_INNER_ANGLE) / (PUNCH_OUTER_ANGLE - PUNCH_INNER_ANGLE))
+		if false:
+			var angle_diff = rad_to_deg(get_angle_to(enemy.global_position) - picture.rotation)
+			while angle_diff > 180.0:
+				angle_diff -= 360.0
+			while angle_diff < -180.0:
+				angle_diff += 360.0
+			#print('Enemy angle', angle_diff)
+			angle_diff = abs(angle_diff)
+			if angle_diff > PUNCH_OUTER_ANGLE:
+				continue
+			if angle_diff > PUNCH_INNER_ANGLE:
+				punch_power = lerpf(1.0, 0.0, (angle_diff - PUNCH_INNER_ANGLE) / (PUNCH_OUTER_ANGLE - PUNCH_INNER_ANGLE))
 		var vec_to_enemy: Vector2 = (enemy.global_position - global_position)
 		#var dir_to_enemy: Vector2 = vec_to_enemy.normalized()
 		if not vec_to_enemy:
