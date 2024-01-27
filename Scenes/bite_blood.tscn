@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj0xhqj1bmi67"]
+
+[ext_resource type="Script" path="res://Scenes/blood.gd" id="1_hci4r"]
+[ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_lcqtw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtxl6"]
+
+[sub_resource type="Curve" id="Curve_0n0le"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.977528, 53.8462), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d2khl"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
+
+[node name="BiteBlood" type="Node2D"]
+script = ExtResource("1_hci4r")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_jtxl6")
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_lcqtw")
+spread = 41.15
+gravity = Vector2(0, 0)
+initial_velocity_min = 161.62
+initial_velocity_max = 323.23
+damping_min = 37.374
+damping_max = 37.374
+damping_curve = SubResource("Curve_0n0le")
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+color_ramp = SubResource("Gradient_d2khl")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

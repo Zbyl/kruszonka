@@ -11,6 +11,8 @@ const PUNCH_OUTER_ANGLE = 80
 const CAMERA_AIM_OFFSET = 200
 const CAMERA_MOVE_OFFSET = 200
 
+const ENEMY_ATTACK_DAMAGE: float = 10.0 # Health damage caused by enemy attacks.
+
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
 @onready var cream_weapon: CreamWeapon = $Picture/CreamWeapon
@@ -22,6 +24,11 @@ const CAMERA_MOVE_OFFSET = 200
 
 var punch_tween: Tween
 var paused: bool = false
+var health: float = 100.0
+
+const BLOOD = preload("res://Scenes/bite_blood.tscn")
+@onready var blood_marker = $BloodMarker
+var blood_container: Node2D
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -33,8 +40,12 @@ func pause(do_pause: bool):
 func _ready():
 	GameData.hud.weapon_changed.connect(_on_weapon_changed)
 	_on_weapon_changed(GameData.hud.current_weapon)
+	blood_container = get_tree().get_first_node_in_group("BloodContainer")
 
 func _physics_process(_delta):
+	if health <= 0:
+		return
+		
 	if paused:
 		return
 
@@ -121,3 +132,18 @@ func _on_weapon_changed(weapon_type: Hud.WeaponType):
 		Hud.WeaponType.BOOMERANG:
 			print('Selected boomerang.')
 			boomerang_weapon.activate(true)
+
+
+func hit_by_enemy(enemy: Enemy):
+	var blood = BLOOD.instantiate()
+	blood_container.add_child(blood)
+	blood.global_position = blood_marker.global_position
+	var dir_to_enemy = (enemy.global_position - global_position).normalized()
+	blood.look_at(blood_marker.global_position - dir_to_enemy)
+	
+	health -= ENEMY_ATTACK_DAMAGE
+	GameData.hud.update_health_label(health)
+	if health <= 0:
+		health = 0
+		animation_player.play('death')
+		GameData.game._on_player_lost()
