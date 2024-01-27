@@ -15,7 +15,7 @@ var follow_activated: bool = false
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var move_direction = Vector2.ZERO
 	var vec_to_player = player.global_position - global_position
 

@@ -32,6 +32,8 @@ const BLOOD = preload("res://Scenes/bite_blood.tscn")
 @onready var blood_marker = $BloodMarker
 var blood_container: Node2D
 
+var _has_all_bunnies = false
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -164,4 +166,9 @@ func compute_saved_bunnies_count():
 func _on_hud_update_timer_timeout():
 	var count = compute_saved_bunnies_count()
 	var total = bunnies.size()
+	_has_all_bunnies = count == total
 	GameData.hud.update_buns_label(count, total)
+
+func has_all_bunnies():
+	return _has_all_bunnies
+	

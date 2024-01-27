@@ -51,13 +51,23 @@ func _on_exit_game_pressed():
 	get_tree().quit()
 
 func _on_player_lost():
+	pause_player_and_enemies(true)
 	lost_sound.play()
 	await lost_sound.finished
 	await get_tree().create_timer(1.0).timeout
 	_switch_level(GAME_LOST, false)
 
 func _on_player_won():
+	pause_player_and_enemies(true)
 	win_sound.play()
 	await win_sound.finished
 	await get_tree().create_timer(1.0).timeout
 	_switch_level(GAME_WON, false)
+
+func pause_player_and_enemies(do_pause: bool):
+	var player = get_tree().get_first_node_in_group("Player")
+	player.pause(do_pause)
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy: Enemy in enemies:
+		enemy.pause(do_pause)
+	
