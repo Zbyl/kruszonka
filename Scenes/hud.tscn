@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=10 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
-[ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="2_uxpl3"]
+[ext_resource type="Texture2D" uid="uid://b3kn5cwuntrv6" path="res://graphics/start_screen.png" id="2_q1ct7"]
 [ext_resource type="Texture2D" uid="uid://cncknss0khcjx" path="res://graphics/frame_selected.png" id="3_7stxd"]
 [ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
-[ext_resource type="Texture2D" uid="uid://dfpcgblolyoc3" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
+[ext_resource type="Texture2D" uid="uid://df1c05tliehhk" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
+[ext_resource type="Texture2D" uid="uid://hpt7jtge2vw7" path="res://graphics/health_640p.png" id="6_ql4xw"]
 
 [sub_resource type="SystemFont" id="SystemFont_1umsg"]
 subpixel_positioning = 0
@@ -26,22 +27,32 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="Screen"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.081
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.082
+offset_top = -0.186001
+offset_bottom = -0.892029
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_uxpl3")
+texture = ExtResource("2_q1ct7")
 
 [node name="Weapons" type="Control" parent="Screen"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_left = 0.035
+anchor_top = 0.164
+anchor_right = 0.035
+anchor_bottom = 0.164
+offset_left = -25.32
+offset_top = -51.784
+offset_right = 18.68
+offset_bottom = 3.216
 
 [node name="GunSelection" type="TextureRect" parent="Screen/Weapons"]
 layout_mode = 0
@@ -81,34 +92,26 @@ texture = ExtResource("5_8q5xa")
 
 [node name="Menu" type="Control" parent="Screen"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -282.0
-offset_right = 280.0
-offset_bottom = 282.0
+anchor_top = 0.084
+anchor_bottom = 0.084
+offset_left = -34.0
+offset_top = -298.304
+offset_right = 392.0
+offset_bottom = 61.6959
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BuloslawHappy" type="Sprite2D" parent="Screen/Menu"]
-position = Vector2(285, 177)
-scale = Vector2(0.089699, 0.089699)
-texture = ExtResource("3_ggmce")
-
 [node name="MenuButtons" type="VBoxContainer" parent="Screen/Menu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -109.0
-offset_top = 72.0
-offset_right = 142.0
-offset_bottom = 313.0
+anchors_preset = -1
+anchor_left = 1.226
+anchor_top = 0.234
+anchor_right = 1.226
+anchor_bottom = 0.234
+offset_left = -459.276
+offset_top = 280.76
+offset_right = -158.276
+offset_bottom = 415.76
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -130,45 +133,54 @@ autostart = true
 
 [node name="HealthIcon" type="TextureRect" parent="Screen"]
 layout_mode = 2
-offset_left = 23.0
-offset_top = 555.0
-offset_right = 573.0
-offset_bottom = 1195.0
+anchor_top = 1.08
+anchor_bottom = 1.08
+offset_left = 21.0
+offset_top = -124.48
+offset_right = 601.0
+offset_bottom = 515.52
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_8q5xa")
+texture = ExtResource("6_ql4xw")
 
 [node name="HealthLabel" type="Label" parent="Screen"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 81.0
-offset_top = -86.0
-offset_right = 170.0
-offset_bottom = -36.0
+anchors_preset = -1
+anchor_top = 1.074
+anchor_bottom = 1.074
+offset_left = 89.0
+offset_top = -114.244
+offset_right = 178.0
+offset_bottom = -59.244
 grow_vertical = 0
 text = "100"
 label_settings = SubResource("LabelSettings_30mec")
 
 [node name="BunsSavedLabel" type="Label" parent="Screen"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 950.0
-offset_top = -76.0
-offset_right = 1124.0
-offset_bottom = -21.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.075
+anchor_right = 1.0
+anchor_bottom = 1.075
+offset_left = -197.0
+offset_top = -110.95
+offset_right = -23.0
+offset_bottom = -55.95
 grow_vertical = 0
 text = "100 / 100"
 label_settings = SubResource("LabelSettings_30mec")
 
 [node name="TextureRect" type="TextureRect" parent="Screen"]
-layout_mode = 0
-offset_left = 862.0
-offset_top = 571.0
-offset_right = 5470.0
-offset_bottom = 4027.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.075
+anchor_right = 1.0
+anchor_bottom = 1.075
+offset_left = -286.0
+offset_top = -113.95
+offset_right = 4322.0
+offset_bottom = 3342.05
 scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_ggmce")
 
