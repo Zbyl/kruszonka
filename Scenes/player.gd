@@ -20,15 +20,22 @@ const CAMERA_MOVE_OFFSET = 200
 
 
 var punch_tween: Tween
+var paused: bool = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func pause(do_pause: bool):
+	paused = do_pause
+
 func _ready():
 	GameData.hud.weapon_changed.connect(_on_weapon_changed)
 
 func _physics_process(_delta):
+	if paused:
+		return
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move_direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")

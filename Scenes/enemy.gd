@@ -25,6 +25,7 @@ const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_
 var player: Player
 var blood_container: Node2D
 
+var paused: bool = false
 var health: float = 100.0
 const PUNCH_DAMAGE = 40
 const BULLET_DAMAGE = 34
@@ -33,6 +34,9 @@ const BOOMERANG_DAMAGE = 60
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	blood_container = get_tree().get_first_node_in_group("BloodContainer")
+
+func pause(do_pause: bool):
+	paused = do_pause
 
 func hit_by_boomerang():
 	_on_hit(BOOMERANG_DAMAGE)
@@ -56,6 +60,9 @@ func _on_hit(damage: float):
 		queue_free()
 
 func _physics_process(_delta):
+	if paused:
+		return
+
 	if push_back_velocity:
 		velocity += push_back_velocity
 		push_back_velocity.x = move_toward(push_back_velocity.x, 0, PUSH_BACK_DRAG)

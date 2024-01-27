@@ -2,11 +2,16 @@ extends Node2D
 
 @onready var picture = $Picture
 var player: Player
+var enemy_container: Node2D
 const LOOK_AT_PLAYER_DISTANCE = 64 * 5
+const SPEAK_DISTANCE = 64 * 5
+var can_speak: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	enemy_container = get_tree().get_first_node_in_group("EnemyContainer")
+	$Cooldown.timeout.connect(func(): self.can_speak = true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,3 +21,24 @@ func _process(delta):
 	var vec_to_player = player.global_position - global_position
 	if vec_to_player.length() < LOOK_AT_PLAYER_DISTANCE:
 		picture.look_at(player.global_position)
+	if vec_to_player.length() < SPEAK_DISTANCE:
+		if can_speak and Input.is_action_just_pressed("action"):
+			#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+			#get_tree().paused = true
+			player.pause(true)
+			var enemies = get_tree().get_nodes_in_group("Enemies")
+			for enemy: Enemy in enemies:
+				enemy.pause(true)
+			can_speak = false
+			Dialogic.timeline_ended.connect(_dialog_ended)
+			Dialogic.start("hello")
+			
+
+func _dialog_ended():
+	Dialogic.timeline_ended.disconnect(_dialog_ended)
+	player.pause(false)
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy: Enemy in enemies:
+		enemy.pause(false)
+	$Cooldown.start()
+	#get_tree().paused = false
