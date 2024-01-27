@@ -12,6 +12,7 @@ var level
 func _ready():
 	hud.new_game_pressed.connect(_on_new_game_pressed)
 	hud.exit_game_pressed.connect(_on_exit_game_pressed)
+	hud.show_background(true)
 	hud.show_menu(true)
 	hud.show_weapons(false)
 
@@ -27,10 +28,11 @@ func _on_new_game_pressed():
 
 	# Hack to make sure we instantiate new level once old level is actually freed.
 	# Otherwise we might have two Players at once etc.
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.01).timeout
 		
 	level = BAKERY.instantiate()
 	add_child(level)
+	hud.show_background(false)
 	hud.show_menu(false)
 	hud.show_weapons(true)
 

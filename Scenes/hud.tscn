@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=5 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
 [ext_resource type="Texture2D" uid="uid://gfpoed85ih73" path="res://graphics/buloslaw.png" id="2_hoiir"]
+[ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="2_uxpl3"]
+[ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
 
 [node name="Hud" type="CanvasLayer" groups=["Hud"]]
 script = ExtResource("1_h83wx")
@@ -13,6 +15,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uxpl3")
 
 [node name="Weapons" type="Control" parent="Screen"]
 anchors_preset = 0
@@ -51,30 +62,49 @@ offset_right = 183.0
 offset_bottom = 88.0
 texture = ExtResource("2_hoiir")
 
-[node name="Menu" type="VBoxContainer" parent="Screen"]
+[node name="Menu" type="Control" parent="Screen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -97.0
-offset_right = 126.0
-offset_bottom = 144.0
+offset_left = -260.0
+offset_top = -282.0
+offset_right = 280.0
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BuloslawHappy" type="Sprite2D" parent="Screen/Menu"]
+position = Vector2(285, 177)
+scale = Vector2(0.089699, 0.089699)
+texture = ExtResource("3_ggmce")
+
+[node name="MenuButtons" type="VBoxContainer" parent="Screen/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = 72.0
+offset_right = 142.0
+offset_bottom = 313.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="NewGameButton" type="Button" parent="Screen/Menu"]
+[node name="NewGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "New Game"
 
-[node name="ExitGameButton" type="Button" parent="Screen/Menu"]
+[node name="ExitGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Exit"
 
-[connection signal="pressed" from="Screen/Menu/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="Screen/Menu/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
+[connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

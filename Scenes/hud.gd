@@ -11,8 +11,9 @@ signal exit_game_pressed()
 @onready var weapons = $Screen/Weapons
 @onready var gun_selection = $Screen/Weapons/GunSelection
 @onready var boomerang_selection = $Screen/Weapons/BoomerangSelection
+@onready var background = $Screen/Background
 @onready var menu = $Screen/Menu
-@onready var new_game_button = $Screen/Menu/NewGameButton
+@onready var new_game_button = $Screen/Menu/MenuButtons/NewGameButton
 
 var weapon_types: Array
 var weapon_selections: Array
@@ -63,6 +64,9 @@ func show_menu(do_show: bool):
 
 func show_weapons(do_show: bool):
 	weapons.visible = do_show
+
+func show_background(do_show: bool):
+	background.visible = do_show
 
 func _on_new_game_button_pressed():
 	new_game_pressed.emit()
