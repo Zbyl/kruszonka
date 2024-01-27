@@ -26,6 +26,7 @@ const MAX_SAVED_BUNNY_DISTANCE: float = 3.0 * 64
 var punch_tween: Tween
 var paused: bool = false
 var health: float = 100.0
+var bunnies
 
 const BLOOD = preload("res://Scenes/bite_blood.tscn")
 @onready var blood_marker = $BloodMarker
@@ -42,6 +43,7 @@ func _ready():
 	GameData.hud.weapon_changed.connect(_on_weapon_changed)
 	_on_weapon_changed(GameData.hud.current_weapon)
 	blood_container = get_tree().get_first_node_in_group("BloodContainer")
+	bunnies = get_tree().get_nodes_in_group("Bunnies")
 
 func _physics_process(_delta):
 	if health <= 0:
@@ -92,7 +94,7 @@ func _physics_process(_delta):
 	
 
 func punch_enemies():
-	print("punch_enemies()")
+	#print("punch_enemies()")
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	for enemy: Enemy in enemies:
 		#print('Rotation', rad_to_deg(picture.rotation))
@@ -102,7 +104,7 @@ func punch_enemies():
 			angle_diff -= 360.0
 		while angle_diff < -180.0:
 			angle_diff += 360.0
-		print('Enemy angle', angle_diff)
+		#print('Enemy angle', angle_diff)
 		angle_diff = abs(angle_diff)
 		if angle_diff > PUNCH_OUTER_ANGLE:
 			continue
@@ -115,12 +117,8 @@ func punch_enemies():
 			vec_to_enemy = Vector2.RIGHT
 		if vec_to_enemy.length_squared() > PUNCH_RADIUS * PUNCH_RADIUS:
 			continue
-		print("Punching")
+		#print("Punching")
 		enemy.push_back_by_player(punch_power)
-		if has_all_bunnies():
-			print('Have all bunnies.')
-		else:
-			print('Some bunnies still missing.')
 		
 	return
 
@@ -147,18 +145,23 @@ func hit_by_enemy(enemy: Enemy):
 	blood.look_at(blood_marker.global_position - dir_to_enemy)
 	
 	health -= ENEMY_ATTACK_DAMAGE
-	GameData.hud.update_health_label(health)
 	if health <= 0:
 		health = 0
 		animation_player.play('death')
 		GameData.game._on_player_lost()
 
-func has_all_bunnies():
-	var bunnies = get_tree().get_nodes_in_group("Bunnies")
+	GameData.hud.update_health_label(health)
+
+func compute_saved_bunnies_count():
+	var count = 0
 	for bunny: Bunny in bunnies:
 		var vec_to_bunny = bunny.global_position - global_position
-		if vec_to_bunny.length() > MAX_SAVED_BUNNY_DISTANCE:
-			return false
+		if vec_to_bunny.length() <= MAX_SAVED_BUNNY_DISTANCE:
+			count += 1
 		
-	return true
+	return count
 	
+func _on_hud_update_timer_timeout():
+	var count = compute_saved_bunnies_count()
+	var total = bunnies.size()
+	GameData.hud.update_buns_label(count, total)

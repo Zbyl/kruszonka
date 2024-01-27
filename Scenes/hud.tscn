@@ -150,5 +150,27 @@ grow_vertical = 0
 text = "100"
 label_settings = SubResource("LabelSettings_30mec")
 
+[node name="BunsSavedLabel" type="Label" parent="Screen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 950.0
+offset_top = -76.0
+offset_right = 1124.0
+offset_bottom = -21.0
+grow_vertical = 0
+text = "100 / 100"
+label_settings = SubResource("LabelSettings_30mec")
+
+[node name="TextureRect" type="TextureRect" parent="Screen"]
+layout_mode = 0
+offset_left = 862.0
+offset_top = 571.0
+offset_right = 5470.0
+offset_bottom = 4027.0
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("3_ggmce")
+
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

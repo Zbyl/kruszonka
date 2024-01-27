@@ -18,6 +18,7 @@ signal exit_game_pressed()
 @onready var new_game_button = $Screen/Menu/MenuButtons/NewGameButton
 @onready var initial_timer = $Screen/InitialTimer
 @onready var health_label: Label = $Screen/HealthLabel
+@onready var buns_saved_label = $Screen/BunsSavedLabel
 
 
 var allowed_weapons: Array
@@ -57,6 +58,9 @@ func _process(_delta):
 		
 func update_health_label(health):
 	health_label.text = "{health}".format({"health": health})
+
+func update_buns_label(buns_saved, buns_total):
+	buns_saved_label.text = "{buns_saved} / {buns_total}".format({"buns_saved": buns_saved, "buns_total": buns_total})
 
 func next_weapon():
 	while true:

@@ -171,3 +171,8 @@ libraries = {
 }
 
 [node name="BloodMarker" type="Marker2D" parent="."]
+
+[node name="HudUpdateTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
