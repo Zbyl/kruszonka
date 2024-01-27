@@ -1,9 +1,6 @@
 extends Node2D
 
-@export var player: NodePath:
-	set(a):
-		player = a
-		_player = get_node(player)
+@export var player: NodePath
 @onready var _player: Player = get_node(player)
 @export var lifetime = 1.4
 
