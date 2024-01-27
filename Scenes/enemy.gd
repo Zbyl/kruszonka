@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy
 
-const SPEED = 150.0
+const SPEED = 300.0
 const PUSH_BACK_DRAG = 50.0
 const PUSH_BACK_INITIAL_VELOCITY = 400.0
 const MIN_DISTANCE_TO_PLAYER = 80	# Enemy will be pushed away from the Player if it is too close.
@@ -12,10 +12,15 @@ var push_back_velocity: Vector2 = Vector2.ZERO
 
 const BLOOD = preload("res://Scenes/blood.tscn")
 @onready var blood_marker = $Picture/BloodMarker
+var blood_container: Node2D
 
 @onready var navigation_agent = $Navigation/NavigationAgent2D
 @export var navigation_target: Node2D
 const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_target when it is this close.
+const ACTIVATION_DISTANCE = 15 * 64 	# Enemy will ignore player farther than this.
+
+@onready var attack_cooldown = $AttackCooldown
+var can_attack: bool = true
 
 @onready var animation_player = $Picture/AnimationPlayer
 
@@ -23,7 +28,6 @@ const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var player: Player
-var blood_container: Node2D
 
 var paused: bool = false
 var health: float = 100.0
@@ -36,6 +40,7 @@ const BOOMERANG_IMMUNE_TIME = 300
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	blood_container = get_tree().get_first_node_in_group("BloodContainer")
+	attack_cooldown.timeout.connect(func(): self.can_attack = true)
 
 func pause(do_pause: bool):
 	paused = do_pause
@@ -79,19 +84,24 @@ func _physics_process(_delta):
 	if navigation_target:
 		# We are following a path.
 		var vec_to_target = navigation_agent.get_next_path_position() - global_position
-		if vec_to_target.length() <= TARGET_REACHED_DISTANCE:
+		if vec_to_target.length() > ACTIVATION_DISTANCE:
 			move_direction = Vector2.ZERO
-			print('Target reached')
+		elif vec_to_target.length() <= TARGET_REACHED_DISTANCE:
+			move_direction = Vector2.ZERO
+			#print('Target reached')
 		else:
 			move_direction = vec_to_target.normalized()
-			print('Following target')
+			#print('Following target')
 	else:
 		# We are going straight for the player.
 		# @todo If distance is large we don't want to follow player.
 		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		move_direction = vec_to_player.normalized()
+		if vec_to_player.length() > ACTIVATION_DISTANCE:
+			move_direction = Vector2.ZERO
+		else:
+			move_direction = vec_to_player.normalized()
 
 	if move_direction:
 		velocity = move_direction * SPEED
@@ -109,6 +119,7 @@ func _physics_process(_delta):
 	if vec_to_player.length() <= MIN_DISTANCE_TO_PLAYER:
 		velocity = Vector2.ZERO
 		global_position = player.global_position - move_direction * MIN_DISTANCE_TO_PLAYER
+		try_attack()
 
 	# Rotate picture of the enemy to look at the player.
 	# We don't rotate the whole enemy beause collition detection works weirdly then.
@@ -116,6 +127,12 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
+func try_attack():
+	if not can_attack:
+		return
+	can_attack = false
+	attack_cooldown.start()
+	player.hit_by_enemy(self)
 
 func _on_navigation_timer_timeout():
 	if not navigation_target:

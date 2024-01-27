@@ -202,4 +202,7 @@ debug_enabled = true
 wait_time = 0.519
 autostart = true
 
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]

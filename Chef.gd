@@ -42,3 +42,4 @@ func _dialog_ended():
 		enemy.pause(false)
 	$Cooldown.start()
 	#get_tree().paused = false
+	GameData.hud.allow_croissant()

@@ -177,9 +177,17 @@ position = Vector2(31, -157)
 
 [node name="EnemyContainer" type="Node2D" parent="." groups=["EnemyContainer"]]
 
-[node name="Enemy" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy" parent="EnemyContainer" instance=ExtResource("5_cmou4")]
 position = Vector2(745, 474)
-navigation_target = NodePath("../../Player")
+
+[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("5_cmou4")]
+position = Vector2(-446, 1067)
+
+[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("5_cmou4")]
+position = Vector2(1508, 1069)
+
+[node name="Enemy4" parent="EnemyContainer" instance=ExtResource("5_cmou4")]
+position = Vector2(1506, -299)
 
 [node name="Enemy2" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(504, -328)
