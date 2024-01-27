@@ -212,7 +212,7 @@ one_shot = true
 [node name="PlayerForget" type="Timer" parent="."]
 
 [node name="PlayerRaycast" type="RayCast2D" parent="."]
-collision_mask = 7
+collision_mask = 3
 
 [connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]
 [connection signal="timeout" from="PlayerForget" to="." method="_on_player_forget_timeout"]

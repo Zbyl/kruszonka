@@ -104,7 +104,7 @@ func _physics_process(_delta):
 func punch_enemies():
 	#print("punch_enemies()")
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	for enemy: Enemy in enemies:
+	for enemy in enemies:
 		#print('Rotation', rad_to_deg(picture.rotation))
 		#print('Enemy angle', rad_to_deg(get_angle_to(enemy.global_position)))
 		var angle_diff = rad_to_deg(get_angle_to(enemy.global_position) - picture.rotation)
@@ -145,7 +145,10 @@ func _on_weapon_changed(weapon_type: Hud.WeaponType):
 			boomerang_weapon.activate(true)
 
 
-func hit_by_enemy(enemy: Enemy):
+func hit_by_bullet(bullet):
+	hit_by_enemy(bullet) # Hack. Good enough for now.
+	
+func hit_by_enemy(enemy):
 	var blood = BLOOD.instantiate()
 	blood_container.add_child(blood)
 	blood.global_position = blood_marker.global_position
