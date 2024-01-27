@@ -9,15 +9,10 @@ script = ExtResource("1_lg11w")
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.12
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, 1.90735e-06)
-scale = Vector2(1, 0.375)
-texture = ExtResource("2_6pmky")
-
-[node name="Icon" type="Sprite2D" parent="Icon"]
-position = Vector2(28.5, 1.90735e-06)
-scale = Vector2(1.46094, 0.375)
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(8, 2.62261e-06)
+scale = Vector2(0.671875, 0.140625)
 texture = ExtResource("2_6pmky")
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(121, 0)
+position = Vector2(49, 0)
