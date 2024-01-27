@@ -2,6 +2,7 @@ class_name Bullet extends Node2D
 
 @export var velocity = 900
 @export var lifetime = 1.5 
+@export var kills_player: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +17,8 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body: Node2D):
 	# body is a PyhicsBody2D or a TileMap
-	if body.is_in_group('Enemies'):
+	if kills_player and body.is_in_group('Player'):
+		body.hit_by_bullet(self)
+	if (not kills_player) and body.is_in_group('Enemies'):
 		body.hit_by_bullet()
 	queue_free()
