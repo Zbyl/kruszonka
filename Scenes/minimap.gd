@@ -25,8 +25,10 @@ func trace(node: Node2D, color: Color):
 	id += 1
 
 func set_pixel(p: Vector2i, color: Color):
-	for i in [Vector2i.LEFT, Vector2i.UP, Vector2i.DOWN, Vector2i.RIGHT, Vector2i.ZERO]:
-		image.set_pixel(p.x+i.x,p.y+i.y, color)
+	image.set_pixel(p.x,p.y, color)
+	for i in [Vector2i.LEFT, Vector2i.UP, Vector2i.DOWN, Vector2i.RIGHT]:
+		if image.get_pixel(p.x+i.x, p.y+i.y) == Color.TRANSPARENT:
+			image.set_pixel(p.x+i.x,p.y+i.y, color.darkened(0.4))
 	
 
 func regenerate():
@@ -54,9 +56,8 @@ func regenerate():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	regenerate()
-
-
-#func _on_timer_timeout():
+#func _process(delta):
 #	regenerate()
+
+func _on_timer_timeout():
+	regenerate()
