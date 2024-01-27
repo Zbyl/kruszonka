@@ -100,7 +100,7 @@ func _physics_process(_delta):
 		var vec_to_target = navigation_agent.get_next_path_position() - global_position
 		if vec_to_target.length() > ACTIVATION_DISTANCE or not sees_player:
 			move_direction = Vector2.ZERO
-		elif vec_to_target.length() <= TARGET_REACHED_DISTANCE:
+		elif vec_to_target.length() <= MIN_DISTANCE_TO_PLAYER:
 			move_direction = Vector2.ZERO
 			#print('Target reached')
 		else:
@@ -133,7 +133,7 @@ func _physics_process(_delta):
 	# @todo Warning: Causes enemy to tunnel through walls.
 	if vec_to_player.length() <= MIN_DISTANCE_TO_PLAYER:
 		velocity = Vector2.ZERO
-		global_position = player.global_position - move_direction * MIN_DISTANCE_TO_PLAYER
+		#global_position = player.global_position - move_direction * MIN_DISTANCE_TO_PLAYER
 		try_attack()
 
 	# Rotate picture of the enemy to look at the player.
