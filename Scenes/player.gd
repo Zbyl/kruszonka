@@ -33,7 +33,7 @@ const BLOOD = preload("res://Scenes/bite_blood.tscn")
 var blood_container: Node2D
 
 var _has_all_bunnies = false
-
+var mouse_used = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -57,7 +57,12 @@ func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var move_direction = Input.get_vector("player_left", "player_right", "player_up", "player_down")
-	var look_direction = Input.get_vector("rotate_left", "rotate_right", "rotate_up", "rotate_down")
+	
+	var look_direction
+	if mouse_used:
+		look_direction = get_local_mouse_position().normalized()
+	else:
+		look_direction = Input.get_vector("rotate_left", "rotate_right", "rotate_up", "rotate_down")
 	#look_direction = Vector2(-look_direction.y, look_direction.x)
 	#print("move_direction", move_direction)
 	if move_direction:
@@ -172,3 +177,8 @@ func _on_hud_update_timer_timeout():
 func has_all_bunnies():
 	return _has_all_bunnies
 	
+func _input(event):
+	if event is InputEventMouse:
+		mouse_used = true
+	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		mouse_used = false
