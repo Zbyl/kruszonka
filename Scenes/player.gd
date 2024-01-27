@@ -47,6 +47,8 @@ func _ready():
 	_on_weapon_changed(GameData.hud.current_weapon)
 	blood_container = get_tree().get_first_node_in_group("BloodContainer")
 	bunnies = get_tree().get_nodes_in_group("Bunnies")
+	
+	get_tree().get_first_node_in_group("Minimap").trace(self, Color.BISQUE)
 
 func _physics_process(_delta):
 	if health <= 0:

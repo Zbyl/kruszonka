@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=11 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
 [ext_resource type="Texture2D" uid="uid://b3kn5cwuntrv6" path="res://graphics/start_screen.png" id="2_q1ct7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dfpcgblolyoc3" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 [ext_resource type="Texture2D" uid="uid://hpt7jtge2vw7" path="res://graphics/health_640p.png" id="6_ql4xw"]
+[ext_resource type="PackedScene" uid="uid://ds730mksbw6rn" path="res://Scenes/minimap.tscn" id="8_awrh3"]
 
 [sub_resource type="SystemFont" id="SystemFont_1umsg"]
 subpixel_positioning = 0
@@ -193,6 +194,9 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.017, 0.017)
 texture = ExtResource("3_ggmce")
+
+[node name="Minimap" parent="Screen/Gauges" instance=ExtResource("8_awrh3")]
+layout_mode = 1
 
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
