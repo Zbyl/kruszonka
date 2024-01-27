@@ -44,10 +44,12 @@ shape = SubResource("CircleShape2D_v4nr4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sb4bw")
+volume_db = -8.013
 autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_p88t1")
+volume_db = -9.478
 autoplay = true
 
 [connection signal="body_entered" from="Path/PathFollow2D/Croissant" to="." method="_on_croissant_body_entered"]
