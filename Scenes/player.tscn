@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgwk0dccc3mi0"]
+[gd_scene load_steps=13 format=3 uid="uid://dgwk0dccc3mi0"]
 
-[ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="1_6aur1"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_l2krp"]
 [ext_resource type="PackedScene" uid="uid://cli6rot5dn72y" path="res://Scenes/cream_weapon.tscn" id="2_3hmvj"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_6mons"]
@@ -25,30 +24,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_6mons")]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Picture/PictureContainer/LeftEye:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_6aur1")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Picture/PictureContainer/RightEye:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_6aur1")]
-}
 
 [sub_resource type="Animation" id="Animation_s31ri"]
 resource_name = "death"
@@ -65,30 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("6_fyub0")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Picture/PictureContainer/LeftEye:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_6aur1")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Picture/PictureContainer/RightEye:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_6aur1")]
 }
 
 [sub_resource type="Animation" id="Animation_xt4j3"]
@@ -155,16 +106,6 @@ player = NodePath("../..")
 [node name="Bun" type="Sprite2D" parent="Picture/PictureContainer"]
 scale = Vector2(0.033, 0.033)
 texture = ExtResource("2_6mons")
-
-[node name="LeftEye" type="Sprite2D" parent="Picture/PictureContainer"]
-position = Vector2(28, -7)
-scale = Vector2(0.0703125, 0.0625)
-texture = ExtResource("1_6aur1")
-
-[node name="RightEye" type="Sprite2D" parent="Picture/PictureContainer"]
-position = Vector2(28, 8)
-scale = Vector2(0.0703125, 0.0625)
-texture = ExtResource("1_6aur1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")
