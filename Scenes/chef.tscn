@@ -20,3 +20,6 @@ texture = ExtResource("2_sf4sg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_ka6nh")
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
