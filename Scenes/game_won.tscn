@@ -1,15 +1,13 @@
 [gd_scene load_steps=2 format=3 uid="uid://xeil22xv151x"]
 
-[ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="1_8sfda"]
+[ext_resource type="Texture2D" uid="uid://cytv1e5g510sm" path="res://graphics/end_screen.png" id="1_o4gad"]
 
 [node name="GameWon" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 232.0
-offset_top = 52.0
-offset_right = 4840.0
-offset_bottom = 3508.0
-scale = Vector2(0.15, 0.15)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_8sfda")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o4gad")
