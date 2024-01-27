@@ -11,6 +11,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	info_timer.timeout.connect(try_show_info)
 	info.visible = false
+	animation_player.animation_finished.connect(hide_info)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +34,6 @@ func try_show_info():
 		can_show_info = false
 		info.visible = true
 		animation_player.play("float")
-		animation_player.animation_finished.connect(hide_info)
 			
 func hide_info(_anim_name):
 	can_show_info = true

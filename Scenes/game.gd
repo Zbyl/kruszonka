@@ -69,6 +69,6 @@ func pause_player_and_enemies(do_pause: bool):
 	if player:
 		player.pause(do_pause)
 	var enemies = get_tree().get_nodes_in_group("Enemies")
-	for enemy: Enemy in enemies:
+	for enemy in enemies:
 		enemy.pause(do_pause)
 	

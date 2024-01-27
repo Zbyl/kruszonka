@@ -47,10 +47,10 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0ryx"]
 font = SubResource("SystemFont_2h3vs")
-font_size = 20
-font_color = Color(0.901961, 0.360784, 0.360784, 1)
+font_size = 32
+font_color = Color(0.952941, 0.509804, 0.494118, 1)
 outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+outline_color = Color(0.392157, 0, 0.0901961, 1)
 
 [node name="ExitDoor" type="Node2D"]
 script = ExtResource("1_u01le")
@@ -82,7 +82,7 @@ offset_right = 123.0
 offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(100, 15)
+pivot_offset = Vector2(170, 15)
 text = "Uratuj więcej pieczywa!"
 label_settings = SubResource("LabelSettings_i0ryx")
 
