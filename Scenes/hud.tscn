@@ -89,6 +89,7 @@ texture = ExtResource("5_8q5xa")
 
 [node name="Menu" type="Control" parent="Screen"]
 layout_mode = 1
+anchors_preset = 0
 offset_left = -22.0
 offset_top = 140.296
 offset_right = 404.0
