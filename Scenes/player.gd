@@ -8,13 +8,16 @@ const PUNCH_POWER = 100.0
 const PUNCH_INNER_ANGLE = 30
 const PUNCH_OUTER_ANGLE = 80
 
+const CAMERA_AIM_OFFSET = 100
+
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
 @onready var cream_weapon: CreamWeapon = $Picture/CreamWeapon
 @onready var boomerang_weapon: BoomerangWeapon = $Picture/CroissantGun
-
+@onready var camera_target: Node2D = $CameraTarget
 
 var punch_tween: Tween
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -57,6 +60,10 @@ func _physics_process(_delta):
 		cream_weapon.try_shoot()
 	if Input.is_action_just_pressed("attack"):
 		boomerang_weapon.try_shoot()
+	
+	camera_target.position.x = move_toward(camera_target.position.x, look_direction.x * CAMERA_AIM_OFFSET, _delta*200)
+	camera_target.position.y = move_toward(camera_target.position.y, look_direction.y * CAMERA_AIM_OFFSET, _delta*200)
+	
 
 func punch_enemies():
 	print("punch_enemies()")
