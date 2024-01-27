@@ -182,3 +182,7 @@ func _input(event):
 		mouse_used = true
 	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		mouse_used = false
+
+func add_health():
+	health = 100
+	GameData.hud.update_health_label(health)
