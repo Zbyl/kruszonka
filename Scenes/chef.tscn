@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://snx3geelarca"]
+
+[ext_resource type="Script" path="res://Chef.gd" id="1_t02k6"]
+[ext_resource type="Texture2D" uid="uid://b45eh2586s55w" path="res://graphics/chief.png" id="2_sf4sg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ka6nh"]
+radius = 44.14
+
+[node name="Chef" type="Node2D"]
+script = ExtResource("1_t02k6")
+
+[node name="Picture" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Picture"]
+rotation = -1.5708
+scale = Vector2(0.0262187, 0.0262187)
+texture = ExtResource("2_sf4sg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_ka6nh")
