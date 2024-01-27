@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgwk0dccc3mi0" path="res://Scenes/player.tscn" id="3_mek1r"]
 [ext_resource type="Texture2D" uid="uid://7d8tahsm4bkl" path="res://graphics/tile_wall_64p.png" id="4_ktk2t"]
 [ext_resource type="PackedScene" uid="uid://dgryeqbs7bwes" path="res://Scenes/enemy.tscn" id="5_cmou4"]
+
 [ext_resource type="PackedScene" uid="uid://oyifoasojyuh" path="res://Scenes/sacks.tscn" id="7_rfhyv"]
 [ext_resource type="PackedScene" uid="uid://snx3geelarca" path="res://Scenes/chef.tscn" id="8_t7wf0"]
 
@@ -15,6 +16,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(-810, -759, -896, 1508, 2072, 1461, 1944, -792)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 31.0
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u8f7"]
 texture = ExtResource("3_5ljqs")
@@ -80,23 +82,24 @@ sources/1 = SubResource("TileSetAtlasSource_lp4x0")
 [node name="Bakery" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(492, 249)
+position = Vector2(686, 249)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("1_tnvft")
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
-position = Vector2(492, 249)
+position = Vector2(686, 249)
 script = ExtResource("2_hwuds")
 priority_override = false
 priority = 0
 zoom = Vector2(1, 1)
 follow_mode = 5
-follow_target = NodePath("../Player")
+follow_target = NodePath("../Player/CTMoveOffset/CameraTarget")
 follow_parameters/target_offset = Vector2(0, 0)
-follow_parameters/damping = false
-follow_parameters/dead_zone_horizontal = 0.228
-follow_parameters/dead_zone_vertical = 0.228
+follow_parameters/damping = true
+follow_parameters/damping_value = 4.627
+follow_parameters/dead_zone_horizontal = 0.048
+follow_parameters/dead_zone_vertical = 0.058
 follow_parameters/viewfinder_in_play = false
 frame_preview = true
 pixel_perfect = false
@@ -137,6 +140,8 @@ position = Vector2(669, -12)
 
 [node name="Sacks2" parent="." instance=ExtResource("7_rfhyv")]
 position = Vector2(1021, 117)
+
+[editable path="Player"]
 
 [node name="Chef" parent="." instance=ExtResource("8_t7wf0")]
 position = Vector2(31, -157)

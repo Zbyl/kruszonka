@@ -12,6 +12,11 @@ radius = 28.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_l2krp")
 
+[node name="CTMoveOffset" type="Node2D" parent="."]
+
+[node name="CameraTarget" type="Node2D" parent="CTMoveOffset"]
+position = Vector2(194, 0)
+
 [node name="Picture" type="Node2D" parent="."]
 
 [node name="CreamWeapon" parent="Picture" instance=ExtResource("2_3hmvj")]
