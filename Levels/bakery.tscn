@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm3xpc8kenn43"]
+[gd_scene load_steps=16 format=3 uid="uid://bm3xpc8kenn43"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_tnvft"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="2_hwuds"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b47vpej42aerj" path="res://graphics/tiles_floor_64p.png" id="5_fafi4"]
 [ext_resource type="PackedScene" uid="uid://oyifoasojyuh" path="res://Scenes/sacks.tscn" id="7_rfhyv"]
 [ext_resource type="PackedScene" uid="uid://snx3geelarca" path="res://Scenes/chef.tscn" id="8_t7wf0"]
+[ext_resource type="PackedScene" uid="uid://cmtumfm8uhbqa" path="res://Scenes/bunny.tscn" id="10_5dkil"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6u8f7"]
 texture = ExtResource("3_5ljqs")
@@ -189,24 +190,50 @@ position = Vector2(1508, 1069)
 [node name="Enemy4" parent="EnemyContainer" instance=ExtResource("5_cmou4")]
 position = Vector2(1506, -299)
 
-[node name="Enemy2" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy5" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(504, -328)
 navigation_target = NodePath("../../Player")
 
-[node name="Enemy3" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy6" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(1032, -184)
 navigation_target = NodePath("../../Player")
 
-[node name="Enemy4" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy7" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(192, 848)
 navigation_target = NodePath("../../Player")
 
-[node name="Enemy5" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy8" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(288, 880)
 navigation_target = NodePath("../../Player")
 
-[node name="Enemy6" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
+[node name="Enemy9" parent="EnemyContainer" node_paths=PackedStringArray("navigation_target") instance=ExtResource("5_cmou4")]
 position = Vector2(200, 928)
 navigation_target = NodePath("../../Player")
+
+[node name="BunnyContainer" type="Node2D" parent="."]
+
+[node name="Bunny" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-219, 528)
+
+[node name="Bunny2" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-245, 904)
+
+[node name="Bunny3" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-2096, 259)
+
+[node name="Bunny4" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(651, 811)
+
+[node name="Bunny5" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-2153, 390)
+
+[node name="Bunny6" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(321, -323)
+
+[node name="Bunny7" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-1151, 937)
+
+[node name="Bunny8" parent="BunnyContainer" instance=ExtResource("10_5dkil")]
+position = Vector2(-1132, -83)
 
 [editable path="Player"]
