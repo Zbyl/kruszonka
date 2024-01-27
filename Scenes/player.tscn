@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rwq7heh8a5k6" path="res://Scenes/croissant_gun.tscn" id="3_42fvx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
-radius = 30.0
+radius = 28.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_l2krp")
