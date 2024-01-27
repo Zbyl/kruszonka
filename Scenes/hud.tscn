@@ -1,13 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=9 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
 [ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="2_uxpl3"]
 [ext_resource type="Texture2D" uid="uid://cncknss0khcjx" path="res://graphics/frame_selected.png" id="3_7stxd"]
 [ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
-[ext_resource type="Texture2D" uid="uid://df1c05tliehhk" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
+[ext_resource type="Texture2D" uid="uid://dfpcgblolyoc3" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 
+[sub_resource type="SystemFont" id="SystemFont_1umsg"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_30mec"]
+font = SubResource("SystemFont_1umsg")
+font_size = 40
+font_color = Color(0.917647, 0.533333, 0, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Hud" type="CanvasLayer" groups=["Hud"]]
+layer = 10
 script = ExtResource("1_h83wx")
 
 [node name="Screen" type="Control" parent="."]
@@ -116,6 +127,64 @@ text = "Exit"
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="HealthIcon" type="TextureRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -95.9999
+offset_right = 581.0
+offset_bottom = 544.0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_8q5xa")
+
+[node name="HealthLabel" type="Label" parent="Screen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = -86.0
+offset_right = 170.0
+offset_bottom = -36.0
+grow_vertical = 0
+text = "100"
+label_settings = SubResource("LabelSettings_30mec")
+
+[node name="BunsSavedLabel" type="Label" parent="Screen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -80.0
+offset_right = -31.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "100 / 100"
+label_settings = SubResource("LabelSettings_30mec")
+
+[node name="BunsSavedIcon" type="TextureRect" parent="Screen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -281.0
+offset_top = -81.0
+offset_right = 4327.0
+offset_bottom = 3375.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.017, 0.017)
+texture = ExtResource("3_ggmce")
 
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

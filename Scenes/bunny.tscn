@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmtumfm8uhbqa"]
+
+[ext_resource type="Script" path="res://Bunny.gd" id="1_2vqsb"]
+[ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_j2pxr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwlhy"]
+radius = 13.0
+
+[node name="Bunny" type="CharacterBody2D" groups=["Bunnies"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_2vqsb")
+
+[node name="Picture" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Picture"]
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("2_j2pxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gwlhy")

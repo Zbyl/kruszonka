@@ -170,6 +170,8 @@ _data = {
 radius = 25.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 12
+collision_mask = 23
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_mcnkq")
@@ -201,5 +203,8 @@ debug_enabled = true
 [node name="NavigationTimer" type="Timer" parent="Navigation"]
 wait_time = 0.519
 autostart = true
+
+[node name="AttackCooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]

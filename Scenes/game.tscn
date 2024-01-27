@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnfubt2r220od"]
+[gd_scene load_steps=5 format=3 uid="uid://dnfubt2r220od"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_fglho"]
 [ext_resource type="PackedScene" uid="uid://bm64kef5ldxxf" path="res://Scenes/hud.tscn" id="2_8dprh"]
 [ext_resource type="AudioStream" uid="uid://8ypmccgxedwh" path="res://Music/Oniku Loop2.wav" id="3_hjixn"]
+[ext_resource type="AudioStream" uid="uid://bpsh0127gwkm" path="res://Sounds/coin.wav" id="4_nfxpx"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" groups=["Game"]]
 script = ExtResource("1_fglho")
 
 [node name="Hud" parent="." instance=ExtResource("2_8dprh")]
@@ -12,3 +13,9 @@ script = ExtResource("1_fglho")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hjixn")
 volume_db = -12.428
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nfxpx")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nfxpx")

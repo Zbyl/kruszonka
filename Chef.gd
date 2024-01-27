@@ -15,7 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# Rotate picture of the enemy to look at the player.
 	# We don't rotate the whole enemy beause collition detection works weirdly then.
 	var vec_to_player = player.global_position - global_position
@@ -25,10 +25,7 @@ func _process(delta):
 		if can_speak and Input.is_action_just_pressed("action"):
 			#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 			#get_tree().paused = true
-			player.pause(true)
-			var enemies = get_tree().get_nodes_in_group("Enemies")
-			for enemy: Enemy in enemies:
-				enemy.pause(true)
+			GameData.game.pause_player_and_enemies(true)
 			can_speak = false
 			Dialogic.timeline_ended.connect(_dialog_ended)
 			Dialogic.start("hello")
@@ -36,9 +33,7 @@ func _process(delta):
 
 func _dialog_ended():
 	Dialogic.timeline_ended.disconnect(_dialog_ended)
-	player.pause(false)
-	var enemies = get_tree().get_nodes_in_group("Enemies")
-	for enemy: Enemy in enemies:
-		enemy.pause(false)
+	GameData.game.pause_player_and_enemies(false)
 	$Cooldown.start()
 	#get_tree().paused = false
+	GameData.hud.allow_croissant()
