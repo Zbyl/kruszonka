@@ -19,12 +19,15 @@ func _physics_process(_delta):
 	var move_direction = Vector2.ZERO
 	var vec_to_player = player.global_position - global_position
 
+	$PlayerRaycast.target_position = vec_to_player
+	$PlayerRaycast.force_raycast_update()
+		
 	# We are going straight for the player.
 	# @todo If distance is large we don't want to follow player.
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if vec_to_player.length() < ACTIVATION_DISTANCE:
+	if vec_to_player.length() < ACTIVATION_DISTANCE and $PlayerRaycast.get_collider() == player:
 		follow_activated = true
 	if follow_activated and (vec_to_player.length() < FOLLOW_DISTANCE):
 		move_direction = vec_to_player.normalized()
