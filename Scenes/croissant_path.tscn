@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://djnmwlrr1ao4o"]
+[gd_scene load_steps=6 format=3 uid="uid://wr78cqydn20l"]
 
 [ext_resource type="Script" path="res://Scenes/croissant_path.gd" id="1_pt0u7"]
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="2_ptrot"]
 
+[sub_resource type="Curve" id="Curve_mcuv8"]
+_data = [Vector2(0.00549451, 1), 0.0, -0.420398, 0, 0, Vector2(0.381868, 0.726386), -0.703178, -0.703178, 0, 0, Vector2(1, 0.432752), -0.299782, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="Curve2D" id="Curve2D_r3gx5"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(-349.728, 120.136, 349.728, -120.136, 0, 0, -3.3371, -128.145, 3.3371, 128.145, 522, -4, 387.104, 111.459, -387.104, -111.459, 1, 0)
+"points": PackedVector2Array(-352.906, 49.6817, 352.906, -49.6817, 0, 0, -56.84, -42.3285, 56.84, 42.3285, 507, -14, 387.104, 111.459, -387.104, -111.459, 1, 0)
 }
 point_count = 3
 
@@ -15,6 +19,7 @@ radius = 23.0
 
 [node name="CroissantPath" type="Node2D"]
 script = ExtResource("1_pt0u7")
+speed_curve = SubResource("Curve_mcuv8")
 
 [node name="FocalPoint" type="Node2D" parent="."]
 position = Vector2(433, 0)
