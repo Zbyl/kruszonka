@@ -93,8 +93,6 @@ func _physics_process(_delta):
 		sees_player = true
 		$PlayerForget.start()
 	
-	print(sees_player)
-	
 	if navigation_target:
 		# We are following a path.
 		var vec_to_target = navigation_agent.get_next_path_position() - global_position

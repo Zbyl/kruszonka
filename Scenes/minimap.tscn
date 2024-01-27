@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds730mksbw6rn"]
+
+[ext_resource type="Script" path="res://Scenes/minimap.gd" id="1_ovbmv"]
+
+[node name="Minimap" type="Control" groups=["Minimap"]]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("1_ovbmv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = 101.0
+offset_right = -98.0
+offset_bottom = 229.0
+grow_horizontal = 0
+flip_h = true
+flip_v = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
