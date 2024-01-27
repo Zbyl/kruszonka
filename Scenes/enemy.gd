@@ -96,9 +96,9 @@ func _physics_process(_delta):
 	if navigation_target:
 		# We are following a path.
 		var vec_to_target = navigation_agent.get_next_path_position() - global_position
-		if vec_to_target.length() > ACTIVATION_DISTANCE or not sees_player:
+		if vec_to_player.length() > ACTIVATION_DISTANCE or not sees_player:
 			move_direction = Vector2.ZERO
-		elif vec_to_target.length() <= MIN_DISTANCE_TO_PLAYER:
+		elif vec_to_player.length() <= MIN_DISTANCE_TO_PLAYER:
 			move_direction = Vector2.ZERO
 			#print('Target reached')
 		else:
