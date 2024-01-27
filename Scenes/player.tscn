@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgwk0dccc3mi0"]
+[gd_scene load_steps=7 format=3 uid="uid://dgwk0dccc3mi0"]
 
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="1_6aur1"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_l2krp"]
 [ext_resource type="PackedScene" uid="uid://cli6rot5dn72y" path="res://Scenes/cream_weapon.tscn" id="2_3hmvj"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_6mons"]
+[ext_resource type="PackedScene" uid="uid://rwq7heh8a5k6" path="res://Scenes/croissant_gun.tscn" id="3_42fvx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 30.0
@@ -14,6 +15,9 @@ script = ExtResource("1_l2krp")
 [node name="Picture" type="Node2D" parent="."]
 
 [node name="CreamWeapon" parent="Picture" instance=ExtResource("2_3hmvj")]
+
+[node name="CroissantGun" parent="Picture" instance=ExtResource("3_42fvx")]
+player = NodePath("../..")
 
 [node name="PictureContainer" type="Node2D" parent="Picture"]
 

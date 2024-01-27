@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://wr78cqydn20l"]
+[gd_scene load_steps=5 format=3 uid="uid://djnmwlrr1ao4o"]
 
 [ext_resource type="Script" path="res://Scenes/croissant_path.gd" id="1_pt0u7"]
 [ext_resource type="Texture2D" uid="uid://b7itnflwkh8oj" path="res://icon.svg" id="2_ptrot"]
@@ -34,3 +34,5 @@ texture = ExtResource("2_ptrot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path/PathFollow2D/Croissant"]
 shape = SubResource("CircleShape2D_v4nr4")
+
+[connection signal="body_entered" from="Path/PathFollow2D/Croissant" to="." method="_on_croissant_body_entered"]

@@ -22,10 +22,14 @@ var blood_container: Node2D
 var health: int = 100
 const PUNCH_DAMAGE = 40
 const BULLET_DAMAGE = 34
+const BOOMERANG_DAMAGE = 60
 
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
 	blood_container = get_tree().get_nodes_in_group("BloodContainer")[0]
+
+func hit_by_boomerang():
+	_on_hit(BOOMERANG_DAMAGE)
 
 func hit_by_bullet():
 	_on_hit(BULLET_DAMAGE)

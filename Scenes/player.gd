@@ -11,6 +11,7 @@ const PUNCH_OUTER_ANGLE = 80
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
 @onready var cream_weapon: CreamWeapon = $Picture/CreamWeapon
+@onready var boomerang_weapon: BoomerangWeapon = $Picture/CroissantGun
 
 
 var punch_tween: Tween
@@ -52,6 +53,11 @@ func _physics_process(delta):
 		punch_tween.parallel().tween_property(picture_container, "position", Vector2(-5, 0), 0.07)
 		#tween.tween_callback($Sprite.queue_free)		
 
+	if Input.is_action_pressed("attack"):
+		cream_weapon.try_shoot()
+	if Input.is_action_just_pressed("attack"):
+		boomerang_weapon.try_shoot()
+
 func punch_enemies():
 	print("punch_enemies()")
 	var enemies = get_tree().get_nodes_in_group("Enemies")
@@ -80,30 +86,15 @@ func punch_enemies():
 		enemy.push_back_by_player(punch_power)
 		
 	return
-	
-func trash():
-	print("punch_enemies()")
-	var enemies = get_tree().get_nodes_in_group("RigidBodyEnemies")
-	for enemy: RigidBody2D in enemies:
-		print("Processing punch")
-		#enemy.apply_central_impulse(Vector2(1000.0, 0.0))
-		#continue
-		var vec_to_enemy: Vector2 = (enemy.global_position - global_position)
-		if not vec_to_enemy:
-			vec_to_enemy = Vector2.RIGHT
-		if vec_to_enemy.length_squared() > PUNCH_RADIUS * PUNCH_RADIUS:
-			continue
-		print("Punching")
-		var enemy_punch = vec_to_enemy.normalized() * PUNCH_POWER
-		#enemy.velocity += enemy_punch
-		enemy.apply_central_impulse(enemy_punch)
 
 
 func _on_weapon_changed(weapon_type: Hud.WeaponType):
 	cream_weapon.activate(false)
+	boomerang_weapon.activate(false)
 	match weapon_type:
 		Hud.WeaponType.GUN:
 			print('Selected gun.')
 			cream_weapon.activate(true)
 		Hud.WeaponType.BOOMERANG:
 			print('Selected boomerang.')
+			boomerang_weapon.activate(true)

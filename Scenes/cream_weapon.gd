@@ -13,13 +13,6 @@ func _ready():
 	$Cooldown.timeout.connect(func(): self.can_shoot = true)
 
 
-func _physics_process(delta):
-	if activated and can_shoot and Input.is_action_pressed("attack"):
-		can_shoot = false
-		$Cooldown.start()
-		shoot()
-	
-
 func activate(should_activate: bool):
 	if should_activate:
 		self.visible = true
@@ -28,7 +21,15 @@ func activate(should_activate: bool):
 		self.visible = false
 		activated = false
 
-func shoot():
+
+func try_shoot():
+	if activated and can_shoot:
+		can_shoot = false
+		$Cooldown.start()
+		_shoot()
+	
+
+func _shoot():
 	var b = bullet.instantiate()
 	b.global_position = $Muzzle.global_position
 	b.global_rotation = $Muzzle.global_rotation
