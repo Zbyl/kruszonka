@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbriqvcqxn7yo"]
+
+[ext_resource type="Texture2D" uid="uid://cuxxk5m6y0cvx" path="res://graphics/rug.png" id="1_ji4gl"]
+
+[node name="Rug" type="Sprite2D"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ji4gl")

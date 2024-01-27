@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt38o74sy0fmh"]
+
+[ext_resource type="Texture2D" uid="uid://ba60uy5ueccf8" path="res://graphics/pot_plant_640.png" id="1_qqfv1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c28h"]
+radius = 37.0
+
+[node name="IndoorTree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5, -79)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qqfv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_2c28h")

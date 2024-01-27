@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://pju6iw7ervvk"]
+
+[ext_resource type="Texture2D" uid="uid://di27vsfei1wyr" path="res://graphics/rock_small.png" id="1_0mkvt"]
+
+[node name="SmallRock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_0mkvt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(15.7, -190.6, 66, -205.3, 66, -194.7, 87.5, -170.1, 146, -171.2, 146, -164.8, 172.2, -143.7, 180.2, -150.8, 192, -145.5, 192, -141.4, 222, -102.4, 222, -89.5, 217.7, -45.4, 256, -27.3, 256, -18.1, 263.7, 14, 252.3, 14, 246.3, 17, 286.8, 53.1, 281.9, 66, 280.4, 66, 240.4, 154, 233.4, 154, 181, 169.3, 181, 162.5, 159.8, 156.6, 155.1, 179, 149.5, 179, 119.5, 203, 113.7, 203, 5.70001, 175, -136, 192.3, -136, 184.3, -216.3, 105.9, -252, 103.3, -252, 92.2, -245.7, 51.3, -284, -13.3, -284, -18, -276.1, -56, -270.7, -56, -246.8, -77, -241.8, -77, -221.5, -76.3, -192.8, -148, -185.9, -148, -79.8, -187, -70.6, -187, -65.2, -175.3, -71.1, -168.5, -55, -170.7, -55, -181.9, -28, -202.9, -28, -204.8, -20.7, -209, -15.2, -209)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(217.3, -139.4, 214.3, -123, 203.4, -123, 180, -130.8, 180, -153.4)
