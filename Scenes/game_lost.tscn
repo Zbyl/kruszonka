@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://lhegefidq6cw"]
+[gd_scene load_steps=2 format=3 uid="uid://pyl0g6jgvquw"]
 
-[ext_resource type="Texture2D" uid="uid://cetooxclmalit" path="res://graphics/donuts.png" id="1_4mqwc"]
+[ext_resource type="Texture2D" uid="uid://cytv1e5g510sm" path="res://graphics/end_screen.png" id="1_c0cie"]
 
 [node name="GameLost" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -116.0
-offset_top = -223.0
-offset_right = 4492.0
-offset_bottom = 3233.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 3854.0
+offset_bottom = 2363.0
 scale = Vector2(0.3, 0.3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_4mqwc")
+texture = ExtResource("1_c0cie")
