@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3kn5cwuntrv6" path="res://graphics/start_screen.png" id="2_q1ct7"]
 [ext_resource type="Texture2D" uid="uid://cncknss0khcjx" path="res://graphics/frame_selected.png" id="3_7stxd"]
 [ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
-[ext_resource type="Texture2D" uid="uid://df1c05tliehhk" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
+[ext_resource type="Texture2D" uid="uid://dfpcgblolyoc3" path="res://graphics/krusz_alone_640p.png" id="4_0auns"]
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 [ext_resource type="Texture2D" uid="uid://hpt7jtge2vw7" path="res://graphics/health_640p.png" id="6_ql4xw"]
 

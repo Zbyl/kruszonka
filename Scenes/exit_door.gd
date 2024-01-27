@@ -23,7 +23,7 @@ func _on_area_2d_body_entered(body):
 		info_timer.start()
 		try_show_info()
 
-func _on_area_2d_body_exited(body):
+func _on_area_2d_body_exited(_body):
 	info_timer.stop()
 
 func try_show_info():
@@ -35,7 +35,7 @@ func try_show_info():
 		animation_player.play("float")
 		animation_player.animation_finished.connect(hide_info)
 			
-func hide_info(anim_name):
+func hide_info(_anim_name):
 	can_show_info = true
 	info.visible = false
 	animation_player.stop()

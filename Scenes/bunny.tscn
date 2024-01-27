@@ -26,3 +26,15 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerRaycast" type="RayCast2D" parent="."]
 collision_mask = 7
+
+[node name="Navigation" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
+
+[node name="NavigationTimer" type="Timer" parent="Navigation"]
+wait_time = 0.519
+autostart = true
+
+[connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]
