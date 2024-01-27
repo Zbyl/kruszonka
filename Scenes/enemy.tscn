@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_mcnkq"]
 [ext_resource type="Texture2D" uid="uid://cirrs0a5ans01" path="res://graphics/mouse_640_walk.png" id="2_ld2ie"]
 
-[sub_resource type="Animation" id="Animation_x2mug"]
-resource_name = "idle"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_fxamr"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -55,8 +54,9 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_fxamr"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_x2mug"]
+resource_name = "idle"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -170,6 +170,8 @@ _data = {
 radius = 25.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_mcnkq")
 
 [node name="Picture" type="Node2D" parent="."]

@@ -14,6 +14,7 @@ signal exit_game_pressed()
 @onready var background = $Screen/Background
 @onready var menu = $Screen/Menu
 @onready var new_game_button = $Screen/Menu/MenuButtons/NewGameButton
+@onready var initial_timer = $Screen/InitialTimer
 
 var weapon_types: Array
 var weapon_selections: Array
@@ -25,7 +26,8 @@ func _ready():
 	weapon_types = [WeaponType.GUN, WeaponType.BOOMERANG]
 	weapon_selections = [gun_selection, boomerang_selection]
 	select_weapon(current_weapon)
-
+	#initial_timer.timeout.connect(func(): select_weapon(current_weapon)) # Hack to properly select weapon.
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -46,6 +48,7 @@ func prev_weapon():
 	select_weapon(current_weapon)
 
 func select_weapon(index: int):
+	print('Selectin weapon: ', index)
 	for selection: CanvasItem in weapon_selections:
 		selection.visible = false
 		

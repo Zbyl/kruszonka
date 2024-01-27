@@ -27,9 +27,11 @@ var blood_container: Node2D
 
 var paused: bool = false
 var health: float = 100.0
+var last_boomerang_hit = -1000000
 const PUNCH_DAMAGE = 40
 const BULLET_DAMAGE = 34
 const BOOMERANG_DAMAGE = 60
+const BOOMERANG_IMMUNE_TIME = 300
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
@@ -39,7 +41,9 @@ func pause(do_pause: bool):
 	paused = do_pause
 
 func hit_by_boomerang():
-	_on_hit(BOOMERANG_DAMAGE)
+	if Time.get_ticks_msec() >= last_boomerang_hit + BOOMERANG_IMMUNE_TIME: 
+		_on_hit(BOOMERANG_DAMAGE)
+		last_boomerang_hit = Time.get_ticks_msec()
 
 func hit_by_bullet():
 	_on_hit(BULLET_DAMAGE)

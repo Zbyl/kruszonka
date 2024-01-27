@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=7 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
-[ext_resource type="Texture2D" uid="uid://gfpoed85ih73" path="res://graphics/buloslaw.png" id="2_hoiir"]
 [ext_resource type="Texture2D" uid="uid://0pqxfjt58ayq" path="res://graphics/tile_64p.png" id="2_uxpl3"]
+[ext_resource type="Texture2D" uid="uid://cncknss0khcjx" path="res://graphics/frame_selected.png" id="3_7stxd"]
 [ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="3_ggmce"]
+[ext_resource type="Texture2D" uid="uid://6447j64ertuk" path="res://graphics/buloslaw_z_kruszonka.png" id="4_ahg21"]
+[ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 
 [node name="Hud" type="CanvasLayer" groups=["Hud"]]
 script = ExtResource("1_h83wx")
@@ -36,31 +38,35 @@ offset_left = 23.0
 offset_top = 13.0
 offset_right = 118.0
 offset_bottom = 108.0
-texture = ExtResource("2_hoiir")
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_7stxd")
 
 [node name="BoomerangSelection" type="TextureRect" parent="Screen/Weapons"]
 layout_mode = 0
-offset_left = 101.0
+offset_left = 129.0
 offset_top = 13.0
-offset_right = 196.0
-offset_bottom = 108.0
-texture = ExtResource("2_hoiir")
+offset_right = 769.0
+offset_bottom = 653.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_7stxd")
 
 [node name="Gun" type="TextureRect" parent="Screen/Weapons"]
 layout_mode = 0
-offset_left = 35.0
+offset_left = 30.0
 offset_top = 24.0
-offset_right = 99.0
-offset_bottom = 88.0
-texture = ExtResource("2_hoiir")
+offset_right = 7930.0
+offset_bottom = 7724.0
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("4_ahg21")
 
 [node name="Boomerang" type="TextureRect" parent="Screen/Weapons"]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 24.0
-offset_right = 183.0
-offset_bottom = 88.0
-texture = ExtResource("2_hoiir")
+offset_left = 150.0
+offset_top = 30.0
+offset_right = 700.0
+offset_bottom = 670.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_8q5xa")
 
 [node name="Menu" type="Control" parent="Screen"]
 layout_mode = 1
@@ -105,6 +111,11 @@ text = "New Game"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Exit"
+
+[node name="InitialTimer" type="Timer" parent="Screen"]
+wait_time = 0.1
+one_shot = true
+autostart = true
 
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
