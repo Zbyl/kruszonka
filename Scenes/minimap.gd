@@ -28,9 +28,10 @@ func set_pixel(p: Vector2i, color: Color):
 	if not(p.x < 0 or p.x > SIZE-1 or p.y < 0 or p.y > SIZE-1):
 		image.set_pixel(p.x,p.y, color)
 	for i in [Vector2i.LEFT, Vector2i.UP, Vector2i.DOWN, Vector2i.RIGHT]:
-		if image.get_pixel(p.x+i.x, p.y+i.y) == Color.TRANSPARENT \
-		   and not (p.x < 0 or p.x > SIZE-1 or p.y < 0 or p.y > SIZE-1):
-			image.set_pixel(p.x+i.x,p.y+i.y, color.darkened(0.4))
+		var q = p+i
+		if not (q.x < 0 or q.x > SIZE-1 or q.y < 0 or q.y > SIZE-1):
+			if image.get_pixel(q.x, q.y) == Color.TRANSPARENT:
+				image.set_pixel(q.x, q.y, color.darkened(0.4))
 	
 
 func regenerate():
