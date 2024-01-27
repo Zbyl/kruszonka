@@ -8,13 +8,16 @@ const PUNCH_POWER = 100.0
 const PUNCH_INNER_ANGLE = 30
 const PUNCH_OUTER_ANGLE = 80
 
-const CAMERA_AIM_OFFSET = 100
+const CAMERA_AIM_OFFSET = 200
+const CAMERA_MOVE_OFFSET = 200
 
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer
 @onready var cream_weapon: CreamWeapon = $Picture/CreamWeapon
 @onready var boomerang_weapon: BoomerangWeapon = $Picture/CroissantGun
-@onready var camera_target: Node2D = $CameraTarget
+@onready var camera_target: Node2D = $CTMoveOffset/CameraTarget
+@onready var camera_move_offset: Node2D = $CTMoveOffset
+
 
 var punch_tween: Tween
 
@@ -61,8 +64,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack"):
 		boomerang_weapon.try_shoot()
 	
-	camera_target.position.x = move_toward(camera_target.position.x, look_direction.x * CAMERA_AIM_OFFSET, _delta*200)
-	camera_target.position.y = move_toward(camera_target.position.y, look_direction.y * CAMERA_AIM_OFFSET, _delta*200)
+	camera_move_offset.position = camera_move_offset.position.move_toward(move_direction * CAMERA_MOVE_OFFSET, _delta*CAMERA_MOVE_OFFSET*2)
+	
+	camera_target.position.x = move_toward(camera_target.position.x, look_direction.x * CAMERA_AIM_OFFSET, _delta*CAMERA_AIM_OFFSET*2)
+	camera_target.position.y = move_toward(camera_target.position.y, look_direction.y * CAMERA_AIM_OFFSET, _delta*CAMERA_AIM_OFFSET*2)
 	
 
 func punch_enemies():
