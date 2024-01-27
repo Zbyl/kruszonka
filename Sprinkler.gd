@@ -12,7 +12,7 @@ const BOOMERANG_IMMUNE_TIME = 300
 @export var ROTATION_SPEED: float = 180 # Degrees per second.
 const DROP = preload("res://Scenes/drop.tscn")
 const EXPLOSION = preload("res://Scenes/explosion.tscn")
-@onready var drop_container = $DropContainer
+var drop_container
 @onready var hit_sound = $HitSound
 @onready var death_sound = $DeathSound
 @onready var splash_sound = $SplashSound
@@ -22,7 +22,7 @@ const EXPLOSION = preload("res://Scenes/explosion.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	drop_container = get_tree().get_first_node_in_group("DropContainer")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

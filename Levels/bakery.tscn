@@ -608,4 +608,6 @@ position = Vector2(237, 3868)
 [node name="Sprinkler8" parent="." instance=ExtResource("13_nu3ub")]
 position = Vector2(488, 2306)
 
+[node name="DropContainer" type="Node2D" parent="." groups=["DropContainer"]]
+
 [editable path="Player"]

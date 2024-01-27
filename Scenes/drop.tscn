@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6apvxx35bhwn"]
 
 [ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_6fixk"]
-[ext_resource type="Texture2D" uid="uid://cnrhv1yq851k4" path="res://graphics/krusz.png" id="2_csanf"]
+[ext_resource type="Texture2D" uid="uid://drfs2ej33027y" path="res://graphics/drop.png" id="2_2yn6j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5en0"]
 radius = 11.0454
 
 [node name="Drop" type="Node2D"]
 script = ExtResource("1_6fixk")
-velocity = 450
+velocity = 600
 lifetime = 0.5
 kills_player = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.625, 0.625)
-texture = ExtResource("2_csanf")
+texture = ExtResource("2_2yn6j")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
