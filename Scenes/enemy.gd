@@ -17,6 +17,7 @@ const BLOOD = preload("res://Scenes/blood.tscn")
 @export var navigation_target: Node2D
 const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_target when it is this close.
 
+@onready var animation_player = $Picture/AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -86,6 +87,11 @@ func _physics_process(_delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	if velocity:
+		animation_player.play("walk")
+	else:
+		animation_player.play("idle")
 
 	# Push back enemy if too close to the player. Otherwise enemy sticks to the player.
 	# @todo Warning: Causes enemy to tunnel through walls.
