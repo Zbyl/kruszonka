@@ -170,6 +170,8 @@ _data = {
 radius = 25.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 12
+collision_mask = 19
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_mcnkq")
