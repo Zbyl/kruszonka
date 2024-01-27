@@ -4,9 +4,9 @@ class_name Bunny
 
 @onready var picture = $Picture
 
-const SPEED = 300.0
+const SPEED = 350.0
 const ACTIVATION_DISTANCE = 3 * 64
-const FOLLOW_DISTANCE = 8 * 64
+const FOLLOW_DISTANCE = 15 * 64
 const MIN_DISTANCE_TO_PLAYER = 1 * 64
 
 var player: Player

@@ -177,6 +177,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_mcnkq")
 
 [node name="Picture" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="BloodMarker" type="Marker2D" parent="Picture"]
 position = Vector2(-30, 0)
@@ -194,11 +195,12 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")
+metadata/_edit_lock_ = true
 
 [node name="Navigation" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
-debug_enabled = true
 
 [node name="NavigationTimer" type="Timer" parent="Navigation"]
 wait_time = 0.519

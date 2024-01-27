@@ -12,7 +12,7 @@ const CAMERA_AIM_OFFSET = 200
 const CAMERA_MOVE_OFFSET = 200
 
 const ENEMY_ATTACK_DAMAGE: float = 10.0 # Health damage caused by enemy attacks.
-const MAX_SAVED_BUNNY_DISTANCE: float = 3.0 * 64
+const MAX_SAVED_BUNNY_DISTANCE: float = 5.0 * 64
 
 @onready var picture = $Picture
 @onready var picture_container = $Picture/PictureContainer

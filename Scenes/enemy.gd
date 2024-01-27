@@ -17,7 +17,7 @@ var blood_container: Node2D
 @onready var navigation_agent = $Navigation/NavigationAgent2D
 @export var navigation_target: Node2D
 const TARGET_REACHED_DISTANCE = 10 	# Enemy will consider it reached navigation_target when it is this close.
-const ACTIVATION_DISTANCE = 15 * 64 	# Enemy will ignore player farther than this.
+const ACTIVATION_DISTANCE = 10 * 64 	# Enemy will ignore player farther than this.
 
 @onready var attack_cooldown = $AttackCooldown
 var can_attack: bool = true
@@ -102,6 +102,7 @@ func _physics_process(_delta):
 			move_direction = Vector2.ZERO
 		else:
 			move_direction = vec_to_player.normalized()
+			navigation_target = player
 
 	if move_direction:
 		velocity = move_direction * SPEED

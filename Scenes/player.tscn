@@ -137,11 +137,13 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_l2krp")
 
 [node name="CTMoveOffset" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CameraTarget" type="Node2D" parent="CTMoveOffset"]
 position = Vector2(194, 0)
 
 [node name="Picture" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CreamWeapon" parent="Picture" instance=ExtResource("2_3hmvj")]
 
@@ -166,6 +168,7 @@ texture = ExtResource("1_6aur1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -173,6 +176,7 @@ libraries = {
 }
 
 [node name="BloodMarker" type="Marker2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="HudUpdateTimer" type="Timer" parent="."]
 autostart = true
