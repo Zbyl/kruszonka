@@ -24,6 +24,9 @@ func _ready():
 	await get_tree().physics_frame
 	navigation_target = player
 	_on_navigation_timer_timeout()
+	
+	var minimap = get_tree().get_first_node_in_group("Minimap")
+	minimap.trace(self, Color.SPRING_GREEN)
 
 func _physics_process(_delta):
 	var move_direction = Vector2.ZERO

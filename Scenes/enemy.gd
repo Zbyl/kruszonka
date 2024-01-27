@@ -45,6 +45,9 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	blood_container = get_tree().get_first_node_in_group("BloodContainer")
 	attack_cooldown.timeout.connect(func(): self.can_attack = true)
+	
+	var minimap = get_tree().get_first_node_in_group("Minimap")
+	minimap.trace(self, Color.RED)
 
 func pause(do_pause: bool):
 	paused = do_pause
