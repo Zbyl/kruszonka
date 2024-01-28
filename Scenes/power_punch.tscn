@@ -33,6 +33,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.46
+local_coords = true
 texture = ExtResource("2_d56s4")
 spread = 180.0
 gravity = Vector2(0, 0)

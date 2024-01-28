@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 500.0
-const PUNCH_RADIUS = 90.0
+const PUNCH_RADIUS = 110.0
 const PUNCH_POWER = 100.0
 const PUNCH_INNER_ANGLE = 30
 const PUNCH_OUTER_ANGLE = 80
@@ -131,7 +131,7 @@ func punch_enemies():
 		#var dir_to_enemy: Vector2 = vec_to_enemy.normalized()
 		if not vec_to_enemy:
 			vec_to_enemy = Vector2.RIGHT
-		if vec_to_enemy.length_squared() > PUNCH_RADIUS * PUNCH_RADIUS:
+		if vec_to_enemy.length() > PUNCH_RADIUS:
 			continue
 		#print("Punching")
 		enemy.push_back_by_player(punch_power)
@@ -183,7 +183,7 @@ func compute_saved_bunnies_count():
 func _on_hud_update_timer_timeout():
 	var count = compute_saved_bunnies_count()
 	var total = bunnies.size()
-	_has_all_bunnies = count == total
+	_has_all_bunnies = count >= 3
 	GameData.hud.update_buns_label(count, total)
 
 func has_all_bunnies():
