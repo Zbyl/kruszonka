@@ -826,6 +826,29 @@ position = Vector2(-2149, -622)
 [node name="HealthPack5" parent="HealthPacks" instance=ExtResource("12_n2vk6")]
 position = Vector2(-3174, -1200)
 
+[node name="AmmoPacks" type="Node2D" parent="."]
+position = Vector2(-924, 3345)
+
+[node name="AmmoPack" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+
+[node name="AmmoPack2" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(-1828, -3022)
+
+[node name="AmmoPack6" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(-1042, -4593)
+
+[node name="AmmoPack7" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(-2402, -7359)
+
+[node name="AmmoPack3" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(3825, -1471)
+
+[node name="AmmoPack4" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(2045, -2900)
+
+[node name="AmmoPack5" parent="AmmoPacks" instance=ExtResource("24_ivye5")]
+position = Vector2(3850, 160)
+
 [node name="Sprinklers" type="Node2D" parent="."]
 
 [node name="Sprinkler" parent="Sprinklers" instance=ExtResource("13_nu3ub")]
@@ -1504,20 +1527,5 @@ position = Vector2(-1518, 1438)
 
 [node name="SmokeContainer" type="Node2D" parent="." groups=["SmokeContainer"]]
 script = ExtResource("23_q662v")
-
-[node name="AmmoPack" parent="." instance=ExtResource("24_ivye5")]
-position = Vector2(-352, 123)
-
-[node name="AmmoPack2" parent="." instance=ExtResource("24_ivye5")]
-position = Vector2(-520, -118)
-
-[node name="AmmoPack3" parent="." instance=ExtResource("24_ivye5")]
-position = Vector2(-981, -144)
-
-[node name="AmmoPack4" parent="." instance=ExtResource("24_ivye5")]
-position = Vector2(-827, 317)
-
-[node name="AmmoPack5" parent="." instance=ExtResource("24_ivye5")]
-position = Vector2(-471, 289)
 
 [editable path="Player"]
