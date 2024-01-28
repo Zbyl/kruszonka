@@ -54,6 +54,10 @@ glossary/default_case_sensitive=true
 
 project/assembly_name="kruszonka"
 
+[editor]
+
+movie_writer/movie_file="S:/Programming/GDProjects/kruszonka/Videos/game.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")

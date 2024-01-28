@@ -114,7 +114,13 @@ text = "Nowa Gra"
 [node name="HelpButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Sterowanie	"
+text = "Sterowanie"
+
+[node name="FullscreenButton" type="Button" parent="Screen/Menu/MenuButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Pełny ekran
+"
 
 [node name="ExitGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
@@ -292,4 +298,5 @@ layout_mode = 1
 
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="Screen/Menu/MenuButtons/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
