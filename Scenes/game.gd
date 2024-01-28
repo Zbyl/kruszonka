@@ -10,6 +10,7 @@ class_name Game
 const BAKERY = preload("res://Levels/bakery.tscn")
 const GAME_LOST = preload("res://Scenes/game_lost.tscn")
 const GAME_WON = preload("res://Scenes/game_won.tscn")
+const INTRO = preload("res://Scenes/intro.tscn")
 
 var level
 
@@ -30,6 +31,8 @@ func _process(_delta):
 
 func _on_new_game_pressed():
 	hud._on_new_game()
+	_switch_level(INTRO, false)
+	await get_tree().create_timer(8.0).timeout
 	_switch_level(BAKERY, true)
 
 func _switch_level(new_level_scene, show_weapons: bool):
