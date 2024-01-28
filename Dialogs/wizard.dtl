@@ -1,0 +1,5 @@
+[style name="CustomDialogStyle"]
+join buloslaw 1 [animation="Instant In Or Out"]
+join wizard 3 [animation="Instant In Or Out"]
+wizard: Nie idź dalej!\
+Tam nie ma gry, której szukasz.
