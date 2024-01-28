@@ -29,5 +29,6 @@ func _on_area_2d_body_entered(body: Node2D):
 		effect.rotation = rotation + PI/2
 		effect.global_position = global_position
 		smoke_container.add_child(effect)
-		
+		if not kills_player:
+			AudioManager.get_node("WallHit").play()
 	queue_free()
