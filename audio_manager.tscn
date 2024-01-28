@@ -63,3 +63,5 @@ panning_strength = 0.0
 [node name="PickHealth" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_5ku82")
 volume_db = -5.75
+max_distance = 2e+07
+attenuation = 1e-05

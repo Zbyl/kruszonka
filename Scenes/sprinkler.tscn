@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b37wk5d51d17d"]
+[gd_scene load_steps=8 format=3 uid="uid://b37wk5d51d17d"]
 
 [ext_resource type="Script" path="res://Sprinkler.gd" id="1_jfygh"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_wibin"]
 [ext_resource type="AudioStream" uid="uid://bpsh0127gwkm" path="res://Sounds/coin.wav" id="3_t3qxh"]
 [ext_resource type="AudioStream" uid="uid://cpcsncf6fqhpc" path="res://Sounds/sprinkler-death.wav" id="4_1611p"]
+[ext_resource type="AudioStream" uid="uid://dk01afrk0faem" path="res://Sounds/sprinkler.wav" id="5_sn5os"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o34re"]
 playback_mode = 1
@@ -42,7 +43,11 @@ volume_db = -4.752
 pitch_scale = 0.68
 
 [node name="SplashSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_t3qxh")
+stream = ExtResource("5_sn5os")
+volume_db = -12.808
+autoplay = true
+attenuation = 4.92457
+panning_strength = 2.2
 
 [node name="SplashTimer" type="Timer" parent="."]
 autostart = true
