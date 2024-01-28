@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://lycjudiwrwn5"]
+
+[ext_resource type="Texture2D" uid="uid://b3kn5cwuntrv6" path="res://graphics/start_screen.png" id="1_ivsxo"]
+[ext_resource type="Script" path="res://Scenes/vignette.gd" id="1_wrycq"]
+[ext_resource type="Material" uid="uid://t86p2cbxguv" path="res://Scenes/desaturate_shader_material.tres" id="2_d883f"]
+[ext_resource type="Shader" path="res://Scenes/desaturate_bg.gdshader" id="4_68445"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uekko"]
+shader = ExtResource("4_68445")
+shader_parameter/saturation = 0.1
+
+[node name="DialogicLayoutLayer" type="Node"]
+script = ExtResource("1_wrycq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+material = ExtResource("2_d883f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ivsxo")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_uekko")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
