@@ -16,5 +16,5 @@ func _process(_delta):
 	if Input.is_action_just_pressed("action"):
 		send_ended('xxx')
 
-func send_ended(anim_name):
+func send_ended(_anim_name):
 	intro_ended.emit()
