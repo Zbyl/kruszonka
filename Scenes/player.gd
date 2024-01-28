@@ -229,5 +229,5 @@ func add_ammo():
 	var effect = AMMO_EFFECT.instantiate()
 	add_child(effect)
 
-	ammo += 30
+	ammo += 50
 	GameData.hud.update_ammo_label(ammo)
