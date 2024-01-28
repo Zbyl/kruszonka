@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://xsqd385jpv8a"]
+
+[ext_resource type="Script" path="res://HanoiTowers.gd" id="1_4j3e3"]
+[ext_resource type="Texture2D" uid="uid://dk234km38xujx" path="res://graphics/buloslaw_happy.png" id="2_dsxw7"]
+[ext_resource type="Texture2D" uid="uid://bgqbvf4nss81w" path="res://graphics/hanoi_ground.png" id="2_eafwt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohtey"]
+radius = 85.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5sscj"]
+radius = 70.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfn2c"]
+size = Vector2(613, 260)
+
+[node name="HanoiTowers" type="Node2D"]
+script = ExtResource("1_4j3e3")
+
+[node name="Tower0" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Ground" type="Sprite2D" parent="Tower0"]
+texture = ExtResource("2_eafwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower0"]
+shape = SubResource("CircleShape2D_ohtey")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Tower0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower0/StaticBody2D3"]
+shape = SubResource("CircleShape2D_5sscj")
+
+[node name="Marker0" type="Marker2D" parent="Tower0"]
+position = Vector2(-3.05176e-05, 0)
+scale = Vector2(0.04, 0.04)
+
+[node name="Marker1" type="Marker2D" parent="Tower0"]
+position = Vector2(-3.03984e-05, -36)
+scale = Vector2(0.03, 0.03)
+
+[node name="Marker2" type="Marker2D" parent="Tower0"]
+position = Vector2(-3.05176e-05, -75)
+scale = Vector2(0.02, 0.02)
+
+[node name="Tower1" type="Area2D" parent="."]
+position = Vector2(177, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Ground" type="Sprite2D" parent="Tower1"]
+texture = ExtResource("2_eafwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower1"]
+shape = SubResource("CircleShape2D_ohtey")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Tower1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower1/StaticBody2D2"]
+shape = SubResource("CircleShape2D_5sscj")
+
+[node name="Marker0" type="Marker2D" parent="Tower1"]
+scale = Vector2(0.04, 0.04)
+
+[node name="Marker1" type="Marker2D" parent="Tower1"]
+position = Vector2(0, -36)
+scale = Vector2(0.03, 0.03)
+
+[node name="Marker2" type="Marker2D" parent="Tower1"]
+position = Vector2(0, -75)
+scale = Vector2(0.02, 0.02)
+
+[node name="Tower2" type="Area2D" parent="."]
+position = Vector2(351, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Ground" type="Sprite2D" parent="Tower2"]
+texture = ExtResource("2_eafwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower2"]
+shape = SubResource("CircleShape2D_ohtey")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tower2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower2/StaticBody2D"]
+shape = SubResource("CircleShape2D_5sscj")
+
+[node name="Marker0" type="Marker2D" parent="Tower2"]
+scale = Vector2(0.04, 0.04)
+
+[node name="Marker1" type="Marker2D" parent="Tower2"]
+position = Vector2(0, -36)
+scale = Vector2(0.03, 0.03)
+
+[node name="Marker2" type="Marker2D" parent="Tower2"]
+position = Vector2(0, -75)
+scale = Vector2(0.02, 0.02)
+
+[node name="Buns" type="Node2D" parent="."]
+
+[node name="Bun0" type="Sprite2D" parent="Buns"]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_dsxw7")
+
+[node name="Bun1" type="Sprite2D" parent="Buns"]
+position = Vector2(0, -36)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_dsxw7")
+
+[node name="Bun2" type="Sprite2D" parent="Buns"]
+position = Vector2(0, -75)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_dsxw7")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(169.5, 0)
+shape = SubResource("RectangleShape2D_dfn2c")
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
