@@ -21,16 +21,16 @@
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 0.5,
+"scale": 0.51,
 "scene": ""
 },
 "Face": {
 "export_overrides": {
-"image": "\"res://graphics/chief.png\""
+"image": "\"res://graphics/chef.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 0.5,
+"scale": 0.51,
 "scene": ""
 }
 },
