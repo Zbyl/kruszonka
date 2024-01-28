@@ -1,4 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dsohy8bmvtfgw"]
+[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://dsohy8bmvtfgw"]
+
+[sub_resource type="AudioEffectEQ6" id="AudioEffectEQ6_h54fs"]
+resource_name = "EQ6"
+band_db/32_hz = -4.3
+band_db/100_hz = -3.4
+band_db/320_hz = -6.2
+band_db/1000_hz = -5.0
+band_db/3200_hz = -3.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g6oef"]
 resource_name = "Reverb"
@@ -15,7 +23,16 @@ tap2_delay_ms = 475.0
 feedback_active = true
 feedback_level_db = -4.47
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_i66mj"]
+resource_name = "Reverb"
+predelay_msec = 135.0
+room_size = 0.05
+damping = 0.81
+wet = 0.04
+
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectEQ6_h54fs")
+bus/0/effect/0/enabled = true
 bus/1/name = &"SuperBus"
 bus/1/solo = false
 bus/1/mute = false
@@ -26,3 +43,11 @@ bus/1/effect/0/effect = SubResource("AudioEffectReverb_g6oef")
 bus/1/effect/0/enabled = true
 bus/1/effect/1/effect = SubResource("AudioEffectDelay_iaifa")
 bus/1/effect/1/enabled = true
+bus/2/name = &"Touchup1"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_i66mj")
+bus/2/effect/0/enabled = true

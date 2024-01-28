@@ -1,10 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmtumfm8uhbqa"]
+[gd_scene load_steps=9 format=3 uid="uid://cmtumfm8uhbqa"]
 
 [ext_resource type="Script" path="res://Bunny.gd" id="1_2vqsb"]
 [ext_resource type="Texture2D" uid="uid://dtemd54255kfj" path="res://graphics/buloslaw_top.png" id="2_j2pxr"]
+[ext_resource type="AudioStream" uid="uid://cbeucc4hfkwpa" path="res://Sounds/bunny1.wav" id="3_32hh8"]
+[ext_resource type="AudioStream" uid="uid://bgu5pk1y3274d" path="res://Sounds/bunny2.wav" id="4_m0v41"]
+[ext_resource type="AudioStream" uid="uid://cybdvy7858yrm" path="res://Sounds/bunny3.wav" id="5_wbi1p"]
+[ext_resource type="AudioStream" uid="uid://4hgqtclmt1h3" path="res://Sounds/bunny4.wav" id="6_0xr5m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwlhy"]
 radius = 13.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_my7e6"]
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 4
+stream_0/stream = ExtResource("3_32hh8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_m0v41")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_wbi1p")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_0xr5m")
+stream_3/weight = 1.0
 
 [node name="Bunny" type="CharacterBody2D" groups=["Bunnies"]]
 collision_layer = 8
@@ -35,5 +52,9 @@ metadata/_edit_lock_ = true
 [node name="NavigationTimer" type="Timer" parent="Navigation"]
 wait_time = 0.519
 autostart = true
+
+[node name="PickSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_my7e6")
+volume_db = -13.198
 
 [connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]

@@ -47,6 +47,7 @@ func _physics_process(_delta):
 	# Sometimes vec_to_target is zero, when it shouldn't be. Hacking it.
 	if (not follow_activated) and (vec_to_player.length() < ACTIVATION_DISTANCE) and ($PlayerRaycast.get_collider() == player):
 		follow_activated = true
+		$PickSound.play()
 		print('follow_activated')
 	if follow_activated: #and (vec_to_target.length() < FOLLOW_DISTANCE):
 		move_direction = vec_to_target.normalized()
