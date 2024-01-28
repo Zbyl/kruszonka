@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf4usjtuwcymp"]
+
+[ext_resource type="AudioStream" uid="uid://dsig8fw8lkigw" path="res://Sounds/punch.wav" id="1_2k0cm"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_khbh3"]
+playback_mode = 1
+random_pitch = 1.8
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("1_2k0cm")
+stream_0/weight = 1.0
+
+[node name="AudioManager" type="Node2D"]
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_khbh3")
+max_distance = 2e+06
+max_polyphony = 3
+panning_strength = 0.0
+
+[node name="PlayerHit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_khbh3")
+max_distance = 2e+06
+max_polyphony = 3
+panning_strength = 0.0
+
+[node name="SuperPunch" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_khbh3")
+pitch_scale = 0.59
+max_distance = 2e+06
+max_polyphony = 3
+panning_strength = 0.0
+bus = &"SuperBus"

@@ -1,0 +1,28 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dsohy8bmvtfgw"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g6oef"]
+resource_name = "Reverb"
+room_size = 0.29
+damping = 0.73
+hipass = 0.25
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_iaifa"]
+resource_name = "Delay"
+tap1_active = false
+tap1_delay_ms = 300.0
+tap2_active = false
+tap2_delay_ms = 475.0
+feedback_active = true
+feedback_level_db = -4.47
+
+[resource]
+bus/1/name = &"SuperBus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_g6oef")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectDelay_iaifa")
+bus/1/effect/1/enabled = true

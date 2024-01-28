@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgryeqbs7bwes"]
+[gd_scene load_steps=12 format=3 uid="uid://dgryeqbs7bwes"]
 
 [ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_mcnkq"]
 [ext_resource type="Texture2D" uid="uid://cirrs0a5ans01" path="res://graphics/mouse_640_walk.png" id="2_ld2ie"]
+[ext_resource type="AudioStream" uid="uid://d0sviyn0gg8hl" path="res://Sounds/mouse-hurt.wav" id="3_pogeb"]
+[ext_resource type="AudioStream" uid="uid://hlb8lmegwrpb" path="res://Sounds/mouse-hurt3.wav" id="4_qoodu"]
+[ext_resource type="AudioStream" uid="uid://bxyaoc6f1p0sl" path="res://Sounds/mouse-hurt2.wav" id="5_utcg0"]
 
 [sub_resource type="Animation" id="Animation_fxamr"]
 length = 0.001
@@ -169,6 +172,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 25.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a8sjn"]
+streams_count = 3
+stream_0/stream = ExtResource("3_pogeb")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_qoodu")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_utcg0")
+stream_2/weight = 1.0
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 12
 collision_mask = 23
@@ -215,6 +227,9 @@ one_shot = true
 
 [node name="PlayerRaycast" type="RayCast2D" parent="."]
 collision_mask = 3
+
+[node name="Squeak" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_a8sjn")
 
 [connection signal="timeout" from="Navigation/NavigationTimer" to="." method="_on_navigation_timer_timeout"]
 [connection signal="timeout" from="PlayerForget" to="." method="_on_player_forget_timeout"]

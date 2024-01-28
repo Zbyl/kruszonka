@@ -72,8 +72,12 @@ func _on_hit(damage: float):
 	blood.rotation = picture.rotation + PI
 	
 	health -= damage
+	AudioManager.get_node("Punch").play()
 	if health <= 0:
 		queue_free()
+	else:
+		$Squeak.pitch_scale = randfn(1.0, 0.05)
+		$Squeak.play()
 
 func _physics_process(_delta):
 	if paused:
