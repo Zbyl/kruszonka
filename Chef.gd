@@ -45,7 +45,7 @@ func _wizard_dialog_ended():
 	$Cooldown.start()
 
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	if is_wizard:
 		if can_speak:
 			GameData.game.pause_player_and_enemies(true)
