@@ -1,9 +1,10 @@
 [style name="CustomDialogStyle"]
 join buloslaw 1 [animation="Instant In Or Out"]
 join chef 3 [animation="Instant In Or Out"]
-chef (Face): Bułosławie! Myszy opanowały piekarnię! Ratuj siebie i pozostałe pieczywo! Ty jeden możesz uratować biedne bułczątka!
-buloslaw: Tak.
+chef (Face): Bułosławie! Myszy opanowały piekarnię! Ratuj siebie i pozostałe pieczywo!\
+Ty jeden możesz uratować biedne bułczątka!
+buloslaw: Wporzo. Nie chce mi się, ale idę.
 chef: Masz tu rogaliki na drogę.\
 Pomogą ci załatwić te gryzonie.
-buloslaw: Tak.
+buloslaw: Wypieków ci u nas dostatek, ale i te przyjmę jako wróżbę zwycięstwa.
 chef: Biegni, Bułosławie! Biegnij!
