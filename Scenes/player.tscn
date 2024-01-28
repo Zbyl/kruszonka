@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgwk0dccc3mi0"]
+[gd_scene load_steps=19 format=3 uid="uid://dgwk0dccc3mi0"]
 
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_l2krp"]
 [ext_resource type="PackedScene" uid="uid://cli6rot5dn72y" path="res://Scenes/cream_weapon.tscn" id="2_3hmvj"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d20x682jj7a5r" path="res://Sounds/player-walk2.wav" id="8_0algx"]
 [ext_resource type="AudioStream" uid="uid://ofr4ipcx2yup" path="res://Sounds/player-walk3.wav" id="9_k8kjl"]
 [ext_resource type="AudioStream" uid="uid://ds31ewd3ye2uj" path="res://Sounds/player-walk4.wav" id="10_0hy6y"]
+[ext_resource type="AudioStream" uid="uid://bpsh0127gwkm" path="res://Sounds/coin.wav" id="11_o6nuo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_snqod"]
 radius = 28.0
@@ -142,5 +143,8 @@ autostart = true
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qlg3k")
 volume_db = -20.59
+
+[node name="NoAmmoSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_o6nuo")
 
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]
