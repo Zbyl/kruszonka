@@ -37,6 +37,9 @@ var blood_container: Node2D
 var _has_all_bunnies = false
 var mouse_used = false
 
+const FOOTSTEP_DISTANCE = SPEED*0.24
+@onready var last_footstep = position
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -108,6 +111,9 @@ func _physics_process(_delta):
 	camera_target.position.x = move_toward(camera_target.position.x, look_direction.x * CAMERA_AIM_OFFSET, _delta*CAMERA_AIM_OFFSET*2)
 	camera_target.position.y = move_toward(camera_target.position.y, look_direction.y * CAMERA_AIM_OFFSET, _delta*CAMERA_AIM_OFFSET*2)
 	
+	if last_footstep.distance_to(position) >= FOOTSTEP_DISTANCE:
+		$Footsteps.play()
+		last_footstep = position
 
 func punch_enemies():
 	#print("punch_enemies()")
@@ -168,10 +174,12 @@ func hit_by_enemy(enemy):
 	if health <= 0:
 		health = 0
 		animation_player.play('death')
+		AudioManager.get_node("SuperPlayerHit").play()
 		GameData.game._on_player_lost()
+	else:
+		AudioManager.get_node("PlayerHit").play()
 
 	GameData.hud.update_health_label(health)
-	AudioManager.get_node("PlayerHit").play()
 
 func compute_saved_bunnies_count():
 	var count = 0

@@ -14,4 +14,5 @@ func _process(_delta):
 func _on_area_2d_body_entered(body):
 	var player: Player = body
 	player.add_health()
+	AudioManager.get_node("PickHealth").play()
 	queue_free()

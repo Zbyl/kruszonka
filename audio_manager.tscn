@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf4usjtuwcymp"]
+[gd_scene load_steps=7 format=3 uid="uid://bf4usjtuwcymp"]
 
 [ext_resource type="AudioStream" uid="uid://dsig8fw8lkigw" path="res://Sounds/punch.wav" id="1_2k0cm"]
+[ext_resource type="AudioStream" uid="uid://dpaxk3swt5ri4" path="res://Sounds/crunch.wav" id="1_da8yh"]
+[ext_resource type="AudioStream" uid="uid://4cfgl4qweqgm" path="res://Sounds/wall-hit.wav" id="3_76idq"]
+[ext_resource type="AudioStream" uid="uid://dsauqlofb87sj" path="res://Sounds/health.wav" id="4_5ku82"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_khbh3"]
 playback_mode = 1
@@ -8,6 +11,14 @@ random_pitch = 1.8
 random_volume_offset_db = 3.0
 streams_count = 1
 stream_0/stream = ExtResource("1_2k0cm")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5ulrr"]
+playback_mode = 1
+random_pitch = 1.8
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("1_da8yh")
 stream_0/weight = 1.0
 
 [node name="AudioManager" type="Node2D"]
@@ -19,10 +30,19 @@ max_polyphony = 3
 panning_strength = 0.0
 
 [node name="PlayerHit" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamRandomizer_khbh3")
+stream = SubResource("AudioStreamRandomizer_5ulrr")
+volume_db = -4.751
 max_distance = 2e+06
 max_polyphony = 3
 panning_strength = 0.0
+
+[node name="SuperPlayerHit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5ulrr")
+volume_db = -3.695
+max_distance = 2e+06
+max_polyphony = 3
+panning_strength = 0.0
+bus = &"SuperBus"
 
 [node name="SuperPunch" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_khbh3")
@@ -31,3 +51,15 @@ max_distance = 2e+06
 max_polyphony = 3
 panning_strength = 0.0
 bus = &"SuperBus"
+
+[node name="WallHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_76idq")
+volume_db = -13.161
+pitch_scale = 0.43
+max_distance = 2e+06
+max_polyphony = 3
+panning_strength = 0.0
+
+[node name="PickHealth" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5ku82")
+volume_db = -5.75
