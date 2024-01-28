@@ -565,6 +565,7 @@ position = Vector2(-1100, 0)
 
 [node name="Chef" parent="." instance=ExtResource("8_t7wf0")]
 position = Vector2(31, -157)
+rotation = 1.57079
 
 [node name="EnemyContainer" type="Node2D" parent="." groups=["EnemyContainer"]]
 

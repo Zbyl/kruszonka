@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dad4340r6jal6"]
+[gd_scene load_steps=8 format=3 uid="uid://buq57llpo4ngy"]
 
-[ext_resource type="Script" path="res://Scenes/blood.gd" id="1_hnd2j"]
-[ext_resource type="Texture2D" uid="uid://l01dlt8sur7l" path="res://graphics/Smoke.png" id="2_rjym2"]
+[ext_resource type="Script" path="res://Scenes/blood.gd" id="1_2v5l4"]
+[ext_resource type="Texture2D" uid="uid://l01dlt8sur7l" path="res://graphics/Smoke.png" id="2_rpdo0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jtxl6"]
 
@@ -19,11 +19,11 @@ offsets = PackedFloat32Array(0, 0.533333, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_1i2ll"]
-offsets = PackedFloat32Array(0, 0.686667, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.3, 0.3, 0.3, 1, 0.29, 0.29, 0.29, 1)
+offsets = PackedFloat32Array(0, 0.393333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.101961, 0.819608, 1, 1, 0, 0, 1, 1)
 
-[node name="BulletSmoke" type="Node2D"]
-script = ExtResource("1_hnd2j")
+[node name="DropSmoke" type="Node2D"]
+script = ExtResource("1_2v5l4")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_jtxl6")
@@ -33,7 +33,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.46
-texture = ExtResource("2_rjym2")
+texture = ExtResource("2_rpdo0")
 direction = Vector2(0, -1)
 spread = 30.0
 gravity = Vector2(0, 0)

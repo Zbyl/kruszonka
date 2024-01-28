@@ -5,6 +5,7 @@ class_name Bullet extends Node2D
 @export var kills_player: bool = false
 var smoke_container
 const BULLET_SMOKE = preload("res://Scenes/bullet_smoke.tscn")
+const DROP_SMOKE = preload("res://Scenes/drop_smoke.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +26,7 @@ func _on_area_2d_body_entered(body: Node2D):
 	elif (not kills_player) and body.is_in_group('Enemies'):
 		body.hit_by_bullet()
 	else:
-		var effect = BULLET_SMOKE.instantiate()
+		var effect = (DROP_SMOKE if kills_player else BULLET_SMOKE).instantiate()
 		effect.rotation = rotation + PI/2
 		effect.global_position = global_position
 		smoke_container.add_child(effect)
