@@ -72,6 +72,7 @@ func _on_hit(damage: float):
 	blood.rotation = picture.rotation + PI
 	
 	health -= damage
+	AudioManager.get_node("Punch").play()
 	if health <= 0:
 		queue_free()
 	else:

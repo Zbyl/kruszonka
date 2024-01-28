@@ -59,6 +59,7 @@ func _on_hit(damage: float):
 		queue_free()
 	else:
 		hit_sound.play()
+	AudioManager.get_node("Punch").play()
 
 	
 func _on_shoot_timer_timeout():

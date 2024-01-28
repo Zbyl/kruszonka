@@ -83,6 +83,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("punch"):
 		punch_enemies()
 	
+		AudioManager.get_node("SuperPunch").play()
 		var effect = POWER_PUNCH.instantiate()
 		picture.add_child(effect)
 		picture.move_child(effect, 0)
@@ -170,6 +171,7 @@ func hit_by_enemy(enemy):
 		GameData.game._on_player_lost()
 
 	GameData.hud.update_health_label(health)
+	AudioManager.get_node("PlayerHit").play()
 
 func compute_saved_bunnies_count():
 	var count = 0
