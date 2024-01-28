@@ -25,10 +25,12 @@ AudioManager="*res://audio_manager.tscn"
 
 directories/dch_directory={
 "buloslaw": "res://Dialogs/buloslaw.dch",
-"chef": "res://Dialogs/chef.dch"
+"chef": "res://Dialogs/chef.dch",
+"wizard": "res://Dialogs/wizard.dch"
 }
 directories/dtl_directory={
-"hello": "res://Dialogs/hello.dtl"
+"hello": "res://Dialogs/hello.dtl",
+"wizard": "res://Dialogs/wizard.dtl"
 }
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true

@@ -125,6 +125,10 @@ player = NodePath("../..")
 scale = Vector2(0.033, 0.033)
 texture = ExtResource("2_6mons")
 
+[node name="HanoiBunMarker" type="Marker2D" parent="Picture/PictureContainer"]
+unique_name_in_owner = true
+position = Vector2(79, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_snqod")
 metadata/_edit_lock_ = true
