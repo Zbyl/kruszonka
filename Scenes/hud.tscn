@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bm64kef5ldxxf"]
+[gd_scene load_steps=13 format=3 uid="uid://bm64kef5ldxxf"]
 
 [ext_resource type="Script" path="res://Scenes/hud.gd" id="1_h83wx"]
 [ext_resource type="Texture2D" uid="uid://b3kn5cwuntrv6" path="res://graphics/start_screen.png" id="2_q1ct7"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://58u4kw3f3j4k" path="res://graphics/croissant_640p.png" id="5_8q5xa"]
 [ext_resource type="Texture2D" uid="uid://hpt7jtge2vw7" path="res://graphics/health_640p.png" id="6_ql4xw"]
 [ext_resource type="PackedScene" uid="uid://ds730mksbw6rn" path="res://Scenes/minimap.tscn" id="8_awrh3"]
+[ext_resource type="Texture2D" uid="uid://w28p8osy8yj4" path="res://graphics/pad.png" id="9_u4gkc"]
+[ext_resource type="LabelSettings" uid="uid://ctco6880ufsxj" path="res://Scenes/controls_label_settings.tres" id="10_if68j"]
 
 [sub_resource type="SystemFont" id="SystemFont_1umsg"]
 subpixel_positioning = 0
@@ -90,27 +92,18 @@ texture = ExtResource("5_8q5xa")
 
 [node name="Menu" type="Control" parent="Screen"]
 layout_mode = 1
-anchors_preset = 0
-offset_left = -22.0
-offset_top = 140.296
-offset_right = 404.0
-offset_bottom = 500.296
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MenuButtons" type="VBoxContainer" parent="Screen/Menu"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.226
-anchor_top = 0.234
-anchor_right = 1.226
-anchor_bottom = 0.234
-offset_left = -463.276
-offset_top = -63.24
-offset_right = -162.276
-offset_bottom = 71.76
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 42.0
+offset_top = 148.0
+offset_right = 343.0
+offset_bottom = 318.0
 theme_override_constants/separation = 10
 
 [node name="NewGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
@@ -118,10 +111,98 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "New Game"
 
+[node name="HelpButton" type="Button" parent="Screen/Menu/MenuButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Controls"
+
 [node name="ExitGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Exit"
+
+[node name="ControlsHelp" type="Control" parent="Screen/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Screen/Menu/ControlsHelp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Screen/Menu/ControlsHelp/CenterContainer"]
+layout_mode = 2
+
+[node name="Pad" type="TextureRect" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = -186.0
+offset_top = -159.0
+offset_right = 2078.0
+offset_bottom = 1479.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_u4gkc")
+
+[node name="WeaponsLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = -65.0
+offset_top = 68.0
+offset_right = 25.0
+offset_bottom = 96.0
+text = "Weapons"
+label_settings = ExtResource("10_if68j")
+
+[node name="MoveLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = 74.0
+offset_top = 69.0
+offset_right = 137.0
+offset_bottom = 97.0
+text = "Move"
+label_settings = ExtResource("10_if68j")
+
+[node name="ShootLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = -107.0
+offset_top = -181.0
+offset_right = -44.0
+offset_bottom = -153.0
+text = "Shoot"
+label_settings = ExtResource("10_if68j")
+
+[node name="PunchLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = 99.0
+offset_top = -187.0
+offset_right = 162.0
+offset_bottom = -159.0
+text = "Punch"
+label_settings = ExtResource("10_if68j")
+
+[node name="LookLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = -184.0
+offset_top = -80.0
+offset_right = -121.0
+offset_bottom = -52.0
+text = "Look"
+label_settings = ExtResource("10_if68j")
+
+[node name="ActionLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
+layout_mode = 1
+offset_left = 183.0
+offset_top = -25.0
+offset_right = 246.0
+offset_bottom = 3.0
+text = "Action"
+label_settings = ExtResource("10_if68j")
 
 [node name="InitialTimer" type="Timer" parent="Screen"]
 wait_time = 0.1
@@ -199,4 +280,5 @@ texture = ExtResource("3_ggmce")
 layout_mode = 1
 
 [connection signal="pressed" from="Screen/Menu/MenuButtons/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Screen/Menu/MenuButtons/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="Screen/Menu/MenuButtons/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

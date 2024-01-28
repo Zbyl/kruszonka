@@ -20,6 +20,7 @@ signal exit_game_pressed()
 @onready var health_label: Label = $Screen/Gauges/HealthLabel
 @onready var buns_saved_label = $Screen/Gauges/BunsSavedLabel
 @onready var gauges = $Screen/Gauges
+@onready var controls_help = $Screen/Menu/ControlsHelp
 
 
 var allowed_weapons: Array
@@ -31,6 +32,7 @@ var current_weapon: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	controls_help.visible = false
 	_on_new_game()
 
 func _on_new_game():
@@ -108,6 +110,8 @@ func show_background(do_show: bool):
 func _on_new_game_button_pressed():
 	new_game_pressed.emit()
 
+func _on_help_button_pressed():
+	controls_help.visible = !controls_help.visible
 
 func _on_exit_game_button_pressed():
 	exit_game_pressed.emit()
