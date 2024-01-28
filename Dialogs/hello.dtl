@@ -1,3 +1,4 @@
+[style name="CustomDialogStyle"]
 join buloslaw 1 [animation="Instant In Or Out"]
 join chef 3 [animation="Instant In Or Out"]
 chef (Face): Bułosławie! Myszy opanowały piekarnię! Ratuj siebie i pozostałe pieczywo! Ty jeden możesz uratować biedne bułczątka!

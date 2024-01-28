@@ -46,8 +46,9 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://Dialogs/CustomDialogStyle.tres"]
+layout/default_style="res://Dialogs/CustomDialogStyle.tres"
+glossary/default_case_sensitive=true
 
 [dotnet]
 
