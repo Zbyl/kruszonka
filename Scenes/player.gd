@@ -32,6 +32,7 @@ var bunnies
 
 const BLOOD = preload("res://Scenes/bite_blood.tscn")
 const HEALING_EFFECT = preload("res://Scenes/healing_effect.tscn")
+const AMMO_EFFECT = preload("res://Scenes/ammo_effect.tscn")
 const POWER_PUNCH = preload("res://Scenes/power_punch.tscn")
 @onready var blood_marker = $BloodMarker
 var blood_container: Node2D
@@ -103,18 +104,19 @@ func _physics_process(_delta):
 		punch_tween.parallel().tween_property(picture_container, "position", Vector2(-5, 0), 0.07)
 		#tween.tween_callback($Sprite.queue_free)		
 
-	if Input.is_action_pressed("attack"):
+	if cream_weapon.activated and Input.is_action_pressed("attack"):
 		if ammo > 0:
 			var shot = cream_weapon.try_shoot()
 			if shot:
 				ammo -= 1
 				GameData.hud.update_ammo_label(ammo)
 		else:
+			GameData.hud.next_weapon()
 			if not no_ammo_sound.playing:
 				no_ammo_sound.play()
 			
 			
-	if Input.is_action_just_pressed("attack"):
+	if boomerang_weapon.activated and Input.is_action_just_pressed("attack"):
 		boomerang_weapon.try_shoot()
 	
 	camera_move_offset.position = camera_move_offset.position.move_toward(move_direction * CAMERA_MOVE_OFFSET, _delta*CAMERA_MOVE_OFFSET*2)
@@ -222,3 +224,10 @@ func add_health():
 
 	health = 100
 	GameData.hud.update_health_label(health)
+
+func add_ammo():
+	var effect = AMMO_EFFECT.instantiate()
+	add_child(effect)
+
+	ammo += 30
+	GameData.hud.update_ammo_label(ammo)
