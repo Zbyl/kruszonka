@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq2rf05piijty"]
+[gd_scene load_steps=4 format=3 uid="uid://dvpbgdl8adesk"]
 
 [ext_resource type="Script" path="res://Scenes/ammo_pack.gd" id="1_8xovy"]
 [ext_resource type="Texture2D" uid="uid://ckeasimhwfbiq" path="res://graphics/ammo_pack.png" id="2_dgd13"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im61q"]
-radius = 25.0
+radius = 43.1045
 
 [node name="AmmoPack" type="Node2D"]
 script = ExtResource("1_8xovy")
@@ -17,7 +17,8 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_im61q")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-scale = Vector2(0.065625, 0.065625)
+position = Vector2(-3, -1)
+scale = Vector2(0.1375, 0.139062)
 texture = ExtResource("2_dgd13")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
