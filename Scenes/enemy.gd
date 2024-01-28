@@ -74,6 +74,9 @@ func _on_hit(damage: float):
 	health -= damage
 	if health <= 0:
 		queue_free()
+	else:
+		$Squeak.pitch_scale = randfn(1.0, 0.05)
+		$Squeak.play()
 
 func _physics_process(_delta):
 	if paused:
