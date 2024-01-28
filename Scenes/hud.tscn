@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://hpt7jtge2vw7" path="res://graphics/health_640p.png" id="6_ql4xw"]
 [ext_resource type="PackedScene" uid="uid://ds730mksbw6rn" path="res://Scenes/minimap.tscn" id="8_awrh3"]
 [ext_resource type="Texture2D" uid="uid://w28p8osy8yj4" path="res://graphics/pad.png" id="9_u4gkc"]
-[ext_resource type="LabelSettings" path="res://Scenes/controls_label_settings.tres" id="10_if68j"]
+[ext_resource type="LabelSettings" uid="uid://ctco6880ufsxj" path="res://Scenes/controls_label_settings.tres" id="10_if68j"]
 
 [sub_resource type="SystemFont" id="SystemFont_1umsg"]
 subpixel_positioning = 0
