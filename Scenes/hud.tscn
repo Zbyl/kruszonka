@@ -109,17 +109,17 @@ theme_override_constants/separation = 10
 [node name="NewGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "New Game"
+text = "Nowa Gra"
 
 [node name="HelpButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Controls"
+text = "Sterowanie	"
 
 [node name="ExitGameButton" type="Button" parent="Screen/Menu/MenuButtons"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Exit"
+text = "Koniec"
 
 [node name="ControlsHelp" type="Control" parent="Screen/Menu"]
 layout_mode = 1
@@ -137,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="Screen/Menu/ControlsHelp/CenterContainer"]
 layout_mode = 2
@@ -152,56 +153,56 @@ texture = ExtResource("9_u4gkc")
 
 [node name="WeaponsLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = -65.0
-offset_top = 68.0
-offset_right = 25.0
-offset_bottom = 96.0
-text = "Weapons"
+offset_left = -115.0
+offset_top = 36.0
+offset_right = 14.0
+offset_bottom = 64.0
+text = "Zmiana broni"
 label_settings = ExtResource("10_if68j")
 
 [node name="MoveLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = 74.0
-offset_top = 69.0
-offset_right = 137.0
-offset_bottom = 97.0
-text = "Move"
+offset_left = 55.0
+offset_top = 36.0
+offset_right = 194.0
+offset_bottom = 64.0
+text = "Poruszanie się"
 label_settings = ExtResource("10_if68j")
 
 [node name="ShootLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = -107.0
-offset_top = -181.0
-offset_right = -44.0
-offset_bottom = -153.0
-text = "Shoot"
+offset_left = -138.0
+offset_top = -177.0
+offset_right = -42.0
+offset_bottom = -149.0
+text = "Strzelanie"
 label_settings = ExtResource("10_if68j")
 
 [node name="PunchLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = 99.0
-offset_top = -187.0
-offset_right = 162.0
-offset_bottom = -159.0
-text = "Punch"
+offset_left = 102.0
+offset_top = -175.0
+offset_right = 259.0
+offset_bottom = -147.0
+text = "Dawanie po ryju"
 label_settings = ExtResource("10_if68j")
 
 [node name="LookLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = -184.0
-offset_top = -80.0
-offset_right = -121.0
-offset_bottom = -52.0
-text = "Look"
+offset_left = -203.0
+offset_top = -55.0
+offset_right = -54.0
+offset_bottom = -27.0
+text = "Rozglądanie się"
 label_settings = ExtResource("10_if68j")
 
 [node name="ActionLabel" type="Label" parent="Screen/Menu/ControlsHelp/CenterContainer/Control"]
 layout_mode = 1
-offset_left = 183.0
-offset_top = -25.0
-offset_right = 246.0
-offset_bottom = 3.0
-text = "Action"
+offset_left = 174.0
+offset_top = -18.0
+offset_right = 270.0
+offset_bottom = 10.0
+text = "Gmeranie"
 label_settings = ExtResource("10_if68j")
 
 [node name="InitialTimer" type="Timer" parent="Screen"]
@@ -217,6 +218,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="HealthIcon" type="TextureRect" parent="Screen/Gauges"]
 layout_mode = 1
