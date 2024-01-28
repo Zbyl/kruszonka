@@ -43,6 +43,8 @@ func _switch_level(new_level_scene, show_weapons: bool):
 	# Hack to make sure we instantiate new level once old level is actually freed.
 	# Otherwise we might have two Players at once etc.
 	await get_tree().create_timer(0.01).timeout
+	if level:
+		return # Hack to avoid some race conditions.
 		
 	level = new_level_scene.instantiate()
 	add_child(level)

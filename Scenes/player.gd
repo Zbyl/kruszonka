@@ -21,11 +21,13 @@ const MAX_SAVED_BUNNY_DISTANCE: float = 5.0 * 64
 @onready var camera_target: Node2D = $CTMoveOffset/CameraTarget
 @onready var camera_move_offset: Node2D = $CTMoveOffset
 @onready var animation_player = $AnimationPlayer
+@onready var no_ammo_sound = $NoAmmoSound
 
 
 var punch_tween: Tween
 var paused: bool = false
 var health: float = 100.0
+var ammo: int = 100
 var bunnies
 
 const BLOOD = preload("res://Scenes/bite_blood.tscn")
@@ -102,7 +104,16 @@ func _physics_process(_delta):
 		#tween.tween_callback($Sprite.queue_free)		
 
 	if Input.is_action_pressed("attack"):
-		cream_weapon.try_shoot()
+		if ammo > 0:
+			var shot = cream_weapon.try_shoot()
+			if shot:
+				ammo -= 1
+				GameData.hud.update_ammo_label(ammo)
+		else:
+			if not no_ammo_sound.playing:
+				no_ammo_sound.play()
+			
+			
 	if Input.is_action_just_pressed("attack"):
 		boomerang_weapon.try_shoot()
 	

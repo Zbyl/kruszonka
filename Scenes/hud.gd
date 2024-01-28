@@ -21,6 +21,7 @@ signal exit_game_pressed()
 @onready var buns_saved_label = $Screen/Gauges/BunsSavedLabel
 @onready var gauges = $Screen/Gauges
 @onready var controls_help = $Screen/Menu/ControlsHelp
+@onready var ammo_label = $Screen/Gauges/AmmoLabel
 
 
 var allowed_weapons: Array
@@ -61,6 +62,9 @@ func _process(_delta):
 		
 func update_health_label(health):
 	health_label.text = "{health}".format({"health": health})
+
+func update_ammo_label(ammo):
+	ammo_label.text = "{ammo}".format({"ammo": ammo})
 
 func update_buns_label(buns_saved, buns_total):
 	buns_saved_label.text = "{buns_saved} / {buns_total}".format({"buns_saved": buns_saved, "buns_total": buns_total})

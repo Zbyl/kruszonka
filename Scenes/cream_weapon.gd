@@ -28,6 +28,8 @@ func try_shoot():
 		can_shoot = false
 		$Cooldown.start()
 		_shoot()
+		return true
+	return false
 	
 
 func _shoot():
